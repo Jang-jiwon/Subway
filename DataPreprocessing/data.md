@@ -1,3 +1,10 @@
+[puzzle](https://openapi.sk.com/products/detail?svcSeq=54&menuSeq=414) : [설명문서](https://puzzle.geovision.co.kr/data/%EC%A7%80%ED%95%98%EC%B2%A0-%ED%98%BC%EC%9E%A1%EB%8F%84-d1651451378652)
+- 열차·칸 혼잡도(3개월 통계)
+-  실시간 열차·칸 혼잡도
+-  경로 혼잡도
+-  출구별 통행량
+
+
 ### 지하철 실시간 도착정보
 - [api설명 xls](https://docs.google.com/spreadsheets/d/1_QJbamuV63j_zo-NNwzQOmU_gK2VOiVnc3PRSbTshYY/edit?usp=sharing)
 - [api사이트](https://data.seoul.go.kr/dataList/OA-12764/F/1/datasetView.do)
