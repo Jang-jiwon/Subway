@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    지하철 역명 : <div id="statnNm"></div><br>
+    상하행선 구분 : <div id="updnLine"> </div><br>
+    <hr>
+    종착역 : <div id="bstatnNm"> </div><br>
+    다음역 : <div id="statnTid"> </div><br>
+    <div id="barvlDt"> </div><br>
+    <div id="arvlMsg2"></div>
+
+</body>
+
+<script>
+    //https://inpa.tistory.com/entry/XML-%F0%9F%93%91-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-XML-%EB%8B%A4%EB%A3%A8%EA%B8%B0
+    var statnName = document.getElementById("statnNm");
+    var updwnLine = document.getElementById("updnLine");
+    var bstatnNm = document.getElementById("bstatnNm");
+    var statnTid = document.getElementById("statnTid");
+    var barvlDt = document.getElementById("barvlDt");
+    var arvlMsg2 = document.getElementById("arvlMsg2");
+    var sybWName = "수원"; //보고싶은 역명
+    //0~5 : 상행    6~10 : 하행 //더많은데 10개만
+    var dataLen="0/5"; // n/m : n번째부터 m번째까지 출력(1부터 시작임)
+var xhr = new XMLHttpRequest();
+var url = 'http://swopenAPI.seoul.go.kr/api/subway/47764c564c786b7337315349667056/json/realtimeStationArrival/'+dataLen+'/'+sybWName; /*URL*/
+xhr.open('GET', url);
+xhr.onreadystatechange = function () {
+    if (this.readyState == xhr.DONE) { // <== 정상적으로 준비되었을때
+        if(xhr.status == 200||xhr.status == 201){ // <== 호출 상태가 정상적일때
+            const jsonObject = JSON.parse(this.responseText);
+            console.log(jsonObject);  
+            statnName.innerHTML = sybWName;
+            updwnLine.innerHTML = jsonObject.realtimeArrivalList[0].updnLine;
+            barvlDt.innerHTML ="현재 : "+jsonObject.realtimeArrivalList[0].arvlMsg2 
+            arvlMsg2.innerHTML = jsonObject.realtimeArrivalList[0].barvlDt+"분 후 도착" ;
+            const lineName = jsonObject.realtimeArrivalList[0].trainLineNm ;
+            var words = lineName.split('-');
+            bstatnNm.innerHTML=words[0];
+            statnTid.innerHTML=words[1];
+
+        }
+    }
+};
+xhr.send('');
+</script>
+
+</html>
