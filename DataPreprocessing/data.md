@@ -39,8 +39,9 @@
 
 ### 추천경로 관련
 - [대중교통환승경로 조회 서비스](https://www.data.go.kr/data/15000414/openapi.do#tab_layer_recommend_data)
+  - [가이드](https://docs.google.com/document/d/1jWgm5gi1rIQgAdp1_jn2Z-N27mqwBkE8uHnyOqWIZtA/edit?usp=sharing)
 
 <br>
 
-<hr>
+
 
