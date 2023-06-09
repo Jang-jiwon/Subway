@@ -32,7 +32,6 @@
 - [호선별 역별 시간대별 승하차 인원 정보](https://data.seoul.go.kr/dataList/OA-12252/S/1/datasetView.do)
 - [호선별 역별 승하차 인원 정보](https://data.seoul.go.kr/dataList/OA-12914/S/1/datasetView.do) - 시간대x 날짜별로
 - [연도별 일별 시간대별 역별 승하차 인원](https://data.seoul.go.kr/dataList/OA-12921/F/1/datasetView.do)
-- [역별 혼잡도 현황](https://data.seoul.go.kr/dataList/OA-12928/F/1/datasetView.do)
 
 <br>
 
