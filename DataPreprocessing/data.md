@@ -28,7 +28,6 @@
     -  경로 혼잡도
     -  출구별 통행량
 - [혼잡도 통계](https://data.seoul.go.kr/dataList/262/S/2/datasetView.do)
-- [서울교통공사_지하철혼잡도정보](https://www.data.go.kr/data/15071311/fileData.do#/tab-layer-recommend-data)
 - [서울교통공사 역별 혼잡도 현황](https://data.seoul.go.kr/dataList/OA-12928/F/1/datasetView.do)
 - [호선별 역별 시간대별 승하차 인원 정보](https://data.seoul.go.kr/dataList/OA-12252/S/1/datasetView.do)
 - [호선별 역별 승하차 인원 정보](https://data.seoul.go.kr/dataList/OA-12914/S/1/datasetView.do) - 시간대x 날짜별로
