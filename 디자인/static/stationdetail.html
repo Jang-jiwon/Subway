@@ -7,6 +7,10 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3744ba3e08.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.min.css" />
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+
 </head>
 <body> 
     <div id="main">
@@ -42,6 +46,9 @@
                         <i class="fa-solid fa-train-subway placeholder_icon"></i>
                         <input type="text" placeholder="역 이름 입력" class="side_menu_input">
                     </div>
+                    <div class="route_change_buttonct"> 
+                        <button class="route_change_button blue button"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+                    </div>
                     <div class="icon_input">
                         <i class="fa-solid fa-train-subway placeholder_icon"></i>
                         <input type="text" placeholder="역 이름 입력" class="side_menu_input">
@@ -54,14 +61,19 @@
 
         <div id="station_detail_container">
 
+            <a class="container_close"><i class="fa-solid fa-xmark blue"></i></a>
+
             <div class="station_detail_btline">
                 <button class="station_detail_linebt line-7">7</button>
                 <button class="station_detail_linebt line-bundang">수</button>
+                <div class="station_detail_buttonbar">
+                    <button class="button">주변 장소 <i class="fa-solid fa-location-dot blue"></i></button>
+                    <button class="button">혼잡도 예측 <i class="fa-solid fa-magnifying-glass blue"></i></button>
+                </div>
             </div>
-
             <div class="station_detail_title fixedclear">
                 <hr class="station_detail_line line-bundang">
-                <div class="station_detail_name">
+                <div class="station_detail_name line-bundang-title">
                     <button class="station_detail_linebt line-bundang">수</button>
                     <h2>강남구청</h2>
                 </div>
@@ -75,9 +87,74 @@
                 </div>
             </div>
 
-            <div class="station_detail_buttonbar">
-                <button class="button">주변 가볼만한곳 <i class="fa-solid fa-location-dot blue"></i></button>
-                <button class="button">혼잡도 예측 <i class="fa-solid fa-magnifying-glass blue"></i></button>
+
+
+            <div class="station_realtime_container">
+                <div class="station_realtime">
+                    <span>청량리 방면</span>
+                    <hr class="greyhr">
+                    <div class="station_realtime_list">
+                        <p><span class="realtime_label">왕십리행</span><span class="realtime_message blue">1분 후 도착</span></p>
+                        <p><span class="realtime_label">왕십리행</span><span class="realtime_message blue">4분 후 도착</span></p> 
+                    </div>
+                </div>
+                <div class="station_realtime_refresh">
+                    <span class="grey">오후 6:35 기준 </span><i class="fa-solid fa-arrows-rotate blue"></i>
+                </div>
+                <div class="station_realtime">
+                    <span>인천 방면</span>
+                    <hr class="greyhr">
+                    <div class="station_realtime_list">
+                        <p><span class="realtime_label">고색행</span><span class="realtime_message blue">전역 도착</span></p>
+                        <p><span class="realtime_label">고색행</span><span class="realtime_message blue">2분 후 도착</span></p> 
+                    </div>                   
+                </div>
+            </div>
+
+            <div class="station_timetable_container">
+                <div class="station_timetable_buttonbar">
+                    <span>열차 시간표</span>
+                    <div>
+                        <button class="button">평일</button>
+                        <button class="button">토요일</button>
+                        <button class="button">휴일</button>
+                    </div>
+                </div>
+                <div class="station_timetable" >
+                    <div class="station_timetable_list" data-simplebar>
+                        <p>청량리 방면</p>
+                        <span class="grey">상행</span>
+                        <ul>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span><span class="express">급</span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                            <li><span>05:44</span><span>왕십리행</span></li>
+                        </ul> 
+                    </div>
+                    <div class="vertical_sepline"></div>
+                    <div class="station_timetable_list" data-simplebar>
+                        <p>인천 방면</p>
+                        <span class="grey">하행</span>
+                        <ul>
+                            <li><span>05:44</span><span>고색행</span></li>
+                            <li><span>05:44</span><span>고색행</span></li>
+                            <li><span>05:44</span><span>인천행</span></li>
+                            <li><span>05:44</span><span><span class="express">급</span>고색행</span></li>
+                            <li><span>05:44</span><span>고색행</span></li>
+                            <li><span>05:44</span><span>인천행</span></li>
+                            <li><span>05:44</span><span>고색행</span></li>
+                            <li><span>05:44</span><span>인천행</span></li>
+                            <li><span>05:44</span><span>고색행</span></li>
+                            <li><span>05:44</span><span>인천행</span></li>
+                        </ul> 
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -85,5 +162,9 @@
 
     </div>
 </body>
+<script>
+
+</script>
+
  
 </html>
