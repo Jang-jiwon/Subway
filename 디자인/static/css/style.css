@@ -1,0 +1,249 @@
+html{
+    font-family: 'Noto Sans KR', sans-serif;  
+}
+body{
+    margin:0px;
+}
+.bold{
+    font-weight : bold
+}
+.blue{
+    color: #0057FF;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.float_right{
+    float:right;
+}
+
+.fixedclear::after{
+    content:'';
+    display:block;
+    clear:both;
+}
+
+.button{
+    background-color: white;
+    padding:7px 12px;
+    border-radius: 10px;
+    border: 1px solid #0057FF;
+    font-size:13px;
+    font-family: 'Noto Sans KR', sans-serif;  
+}
+
+.button:hover{
+    background-color: #0057FF;
+    color:white;
+    cursor:pointer;
+} 
+.button:hover i{ 
+    color:white !important;  
+}
+#main{
+    display: flex;
+}
+
+#subway_map_container, #station_detail_container {  
+    position:relative;
+    overflow: hidden;  
+    width:100%;
+    height:100vh;
+}
+#subway_map{  
+    position:absolute;
+    background-image: url('../images/naver_subway.jpg');
+    background-position: center;
+    background-size: cover;  
+    width:100%;
+    height:100vh;
+}
+
+#side_menu{  
+    position:relative;
+    z-index: 1;
+    background-color: white; 
+    min-width:430px;
+    height:100vh;  
+    box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
+}
+
+#side_menu_title{  
+    box-sizing: border-box;
+    padding:40px;
+    width:100%;
+    height:220px;
+    background: linear-gradient(116.98deg, #6B53FF 18.39%, rgba(107, 83, 255, 0) 119.74%);
+}
+
+#side_menu_title i{
+    font-size: 50px; 
+}
+
+#side_menu_title h2{
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
+#side_menu_title p{
+    font-size: 12px;
+}
+.side_menu_titletxt{
+    text-align: center;
+    color:white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin : 0px;
+}
+
+#side_menu_body{ 
+    box-sizing: border-box;
+    padding : 60px;
+}
+#station_input, #route_input{
+    width:fit-content;
+    margin: 0px auto; 
+    font-size: 14px;
+} 
+#station_input a, #route_input a{
+    float:right;
+    margin-top:3px; 
+    font-size:12px; 
+} 
+
+.side_menu_label{
+    margin: 10px 0px;
+}
+
+.side_menu_input{ 
+    box-sizing: border-box;
+    border: 1px solid #BEBEBE;
+    border-radius: 7px;
+    width: 280px;
+    height: 40px;
+    margin: 5px 0px;
+    padding-left: 30px;
+}
+.icon_input{
+    position:relative;
+
+}
+.placeholder_icon{
+    font-size:15px;
+    color: #72FFA2;
+    position:absolute;
+    top: 50%; 
+    left:10px;
+    transform: translateY(-50%); 
+}
+.side_menu_input::placeholder{ 
+    font-size: 12px;   
+}
+
+#side_menu_body button{ 
+    margin-top:5px;
+}
+.route_change_buttonct{
+    position:relative;  
+}
+.route_change_button{
+    border-radius: 100px !important; 
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index: 1;
+}
+.route_change_button i{ 
+    transform: rotate( 90deg );
+}
+
+
+/* station detail */
+
+.station_detail_container {
+    width:100%;
+}
+.station_detail_linebt {
+    box-sizing: border-box;
+    width:35px; 
+    height:35px;
+    border-radius: 50px;
+    border:none;
+    color:white !important;
+    font-size:15px;  
+    font-weight: bold;
+    padding:0px;
+    margin:3px;
+}
+.station_detail_btline{
+    margin: 40px 0px 10px 40px;
+}
+.station_detail_title{
+    position:relative; 
+}
+.station_detail_line {
+    width:100%;
+    height:15px;
+    border:none;
+    float:left;
+}
+.station_detail_name {
+    position: absolute;
+    float:left;
+    left:430px;
+    top:-40px;
+    width: 200px;
+    height: 75px;
+    background-color: white;
+    border : 15px solid #FFCE33; 
+    border-radius: 90px;
+    text-align: center;
+}
+.station_detail_name button{
+    width: 30px; 
+    height:30px;
+    transform: translateY(-2px); 
+}
+
+.station_detail_name h2{
+    display: inline-block;
+} 
+
+.station_detail_prevnext{ 
+    left:422px; 
+    display: inline-block;
+    background-color: #0057FF; 
+    font-size: 15px; 
+    width:245px;
+    position:relative; 
+}
+
+.station_detail_prevnext a{
+    position:absolute;
+    top:-20px;
+}
+.station_detail_prev{ 
+    left:0px;
+    transform:translateX(-100%);
+}
+.station_detail_next{ 
+    right:0px;
+    transform:translateX(100%);
+}
+
+.station_detail_buttonbar{
+    margin-top:20px;
+    margin-left:750px;
+}
+.station_detail_buttonbar button{
+    font-size:15px;
+}
+.line-7{
+    background-color : #6A7417; 
+}
+.line-bundang{
+    background-color : #FFCE33; 
+}
