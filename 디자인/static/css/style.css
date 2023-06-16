@@ -10,8 +10,17 @@ body{
 .blue{
     color: #0057FF;
 }
+.bold{
+    font-weight:bold;
+}
 .grey{
     color: #A8A8A8;
+}
+.green{
+    color: #72FFA2;
+}
+.red{
+    color: tomato;
 }
 .greyhr{
     border: 1px solid #dcdcdc
@@ -41,16 +50,22 @@ a{
     margin:1px;
 }
 
-.button:hover{
+.button:hover, .clicked{
     background-color: #0057FF;
     color:white;
     cursor:pointer;
 } 
-.button:hover i{ 
+.button:hover i, .clicked i{ 
     color:white !important;  
 }
+
+ 
 #main{
     display: flex;
+}
+
+#subway_map_container{
+    overflow: hidden;
 }
 
 #subway_map_container, #station_detail_container {  
@@ -172,6 +187,44 @@ a{
     transform: rotate( 90deg );
 }
 
+#subway_infowindow{
+    box-sizing: border-box;
+    position:absolute;
+    width:250px;
+    height:110px;
+    border-radius:10px;
+    background-color: white;
+    border:1px solid #a8a8a8;
+    box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
+    font-size:14px;
+    text-align: center;
+    padding:15px;     
+    z-index: 1;
+}
+
+#infowindow_btbar{
+    display: flex; 
+}
+
+.infowindow_bt{
+   width:33%;
+   text-align: center;
+}
+
+#subway_infowindow a:hover{
+    cursor:pointer;
+}
+ 
+ 
+.infowindow_bt i{
+    font-size:30px;
+}
+
+.infowindow_sepline{
+    width: 1px; 
+    background-color: #dcdcdc;
+}
+
 
 /* station detail */
 
@@ -199,7 +252,7 @@ a{
     position:relative; 
 }
 .station_detail_line {
-    width:1090px;
+    width:1100px;
     height:15px;
     border:none;
     float:left;
@@ -252,6 +305,7 @@ a{
     width: 840px; 
     white-space: nowrap;
     display: inline-block;
+    position: relative;
 }
 .station_detail_buttonbar button{
     font-size:15px;
@@ -310,7 +364,7 @@ a{
     display: flex;
     justify-content: space-between;
 }
-.station_timetable{
+.station_timetable, .station_congestion{
     box-sizing: border-box;
     width:845px;
     min-width:845px;
@@ -321,6 +375,11 @@ a{
     display: flex;
     padding:20px;
 }
+.station_congestion{
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .vertical_sepline{
     width:1px;
     height:100%;
@@ -368,6 +427,106 @@ a{
 .container_close:hover{
     cursor: pointer;
 }
+
+
+.place_dropdown{
+    box-sizing: border-box;
+    text-align: left;
+    position: absolute;
+    border: 1px solid #A8A8A8;
+    background-color: white;
+    height:fit-content;
+    max-height: 320px; 
+    width: 280px; 
+    white-space:wrap;
+    z-index: 1;
+    border-radius: 10px;
+    padding:15px;
+    overflow: auto;
+    display: none; 
+    box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.15);
+}
+ 
+ 
+.place_dropdown h4{
+    margin:0px;
+    margin-left:10px;
+}
+.place_dropdown hr{
+    margin:0px;
+}
+.place_dropdown i{ 
+    margin-right:2px;
+}
+.place_dropdown ul{ 
+    padding:10px;
+    list-style:none; 
+    margin:0px;
+}
+.place_dropdown i, li{ 
+    line-height: 20px;
+} 
+.place_dropdown li{ 
+    margin:20px 0px;
+} 
+.place_dropdown_list{
+    display: flex; 
+} 
+.place_dropdown_detail{
+    margin-left:4px ; 
+}
+.place_dropdown span{ 
+    font-size:14px;
+    margin:1px; 
+}
+.place_dropdown a {
+    font-size:12px;
+}
+
+.back_link_container{
+    width:1085px;
+    min-width: 1085px;
+    text-align: center;
+    line-height: 50px; 
+}
+#back_link{ 
+    font-size: 13px;
+    text-decoration:underline;
+}
+
+.station_congestion_updown{
+    display: flex; 
+    justify-content: space-around; 
+}
+ 
+.station_congestion_title{
+    display: inline-block;
+}
+.station_congestion_title .grey{
+    font-size:13px;
+    margin-left:3px;
+}
+.station_congestion_bar{
+    display: inline-flex;
+    margin-top: 5px;
+}
+.station_congestion_block{
+    text-align: center; 
+}
+.station_congestion_block span{
+    font-size:12px;
+}
+.station_congestion_color{ 
+    margin:1px;
+    width:65px;
+    height:10px;
+    background-color: #A8A8A8;
+    border-radius: 10px;
+    border:none; 
+    display:block;
+}
+
+ 
 .line-7{
     background-color : #6A7417; 
 }
@@ -382,3 +541,18 @@ a{
     border : 15px solid #FFCE33; 
 }
 
+.congested{
+    background-color: #FF5732;
+}
+
+.caution{
+    background-color: #FF9900;
+}
+
+.normal{
+    background-color: #FFF50C;
+}
+
+.space{
+    background-color: #00DC3E;
+}

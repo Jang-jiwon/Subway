@@ -118,78 +118,118 @@
             </div>
 
 
-
-            <div class="station_realtime_container">
-                <div class="station_realtime">
-                    <span>청량리 방면</span>
-                    <hr class="greyhr">
-                    <div class="station_realtime_list">
-                        <p><span class="realtime_label">왕십리행</span><span class="realtime_message blue">1분 후 도착</span></p>
-                        <p><span class="realtime_label">왕십리행</span><span class="realtime_message blue">4분 후 도착</span></p> 
-                    </div>
-                </div>
-                <div class="station_realtime_refresh">
-                    <span class="grey">오후 6:35 기준 </span><i class="fa-solid fa-arrows-rotate blue"></i>
-                </div>
-                <div class="station_realtime">
-                    <span>인천 방면</span>
-                    <hr class="greyhr">
-                    <div class="station_realtime_list">
-                        <p><span class="realtime_label">고색행</span><span class="realtime_message blue">전역 도착</span></p>
-                        <p><span class="realtime_label">고색행</span><span class="realtime_message blue">2분 후 도착</span></p> 
-                    </div>                   
-                </div>
+            <div class="back_link_container">
+                <a class="grey" id="back_link">역 정보로 돌아가기</a>
             </div>
 
             <div class="station_timetable_container">
                 <div class="station_timetable_buttonbar">
-                    <span>열차 시간표</span>
+                    <span class="bold">시간대별 역 혼잡도 예측</span>
                     <div>
                         <button class="button">평일</button>
                         <button class="button">토요일</button>
                         <button class="button">휴일</button>
                     </div>
                 </div>
-                <div class="station_timetable" >
-                    <div class="station_timetable_list" data-simplebar>
-                        <p>청량리 방면</p>
-                        <span class="grey">상행</span>
-                        <ul>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span><span class="express">급</span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                        </ul> 
+                <div class="station_congestion">
+                    <div class="station_congestion_updown">
+                        <div class="station_congestion_title">
+                            <span>청량리 방면</span><span class="grey">상행</span>
+                        </div>
+                        <div class="station_congestion_bar">
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color space"></button>
+                                <span>05-07</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color congested"></button>
+                                <span>07-09</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color congested"></button>
+                                <span>09-11</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color normal"></button>
+                                <span>11-13</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color caution"></button>
+                                <span>13-15</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color space"></button>
+                                <span>15-17</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color space"></button>
+                                <span>17-19</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color caution"></button>
+                                <span>19-21</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color caution"></button>
+                                <span>21-23</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color normal"></button>
+                                <span>23-01</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="vertical_sepline"></div>
-                    <div class="station_timetable_list" data-simplebar>
-                        <p>인천 방면</p>
-                        <span class="grey">하행</span>
-                        <ul>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                            <li><span>05:44</span><span><span class="express">급</span>고색행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                        </ul> 
+                    <div class="station_congestion_updown">
+                        <div class="station_congestion_title">
+                            <span>인천 방면</span><span class="grey">하행</span>
+                        </div>
+                        <div class="station_congestion_bar">
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color space"></button>
+                                <span>05-07</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color congested"></button>
+                                <span>07-09</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color congested"></button>
+                                <span>09-11</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color normal"></button>
+                                <span>11-13</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color caution"></button>
+                                <span>13-15</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color space"></button>
+                                <span>15-17</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color space"></button>
+                                <span>17-19</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color caution"></button>
+                                <span>19-21</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color caution"></button>
+                                <span>21-23</span>
+                            </div>
+                            <div class="station_congestion_block">
+                                <button class="station_congestion_color normal"></button>
+                                <span>23-01</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
- 
+
         </div>
-
-
 
     </div>
 </body>
