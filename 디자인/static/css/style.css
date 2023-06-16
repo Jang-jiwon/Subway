@@ -80,14 +80,15 @@ a{
     overflow-x: auto;
 }
 
-#subway_map{  
+
+ /* #subway_map{  
     position:absolute;
-    background-image: url('../images/naver_subway.jpg');
+    background-image: url('../images/naver_subway.jpg'); 
     background-position: center;
     background-size: cover;  
     width:100%;   
     min-height:100%;
-}
+}  */
 
 #side_menu{  
     position:relative;
@@ -533,6 +534,18 @@ a{
 .line-bundang{
     background-color : #FFCE33; 
 }
+
+#menuWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
 
 .line-7-title{
     border : 15px solid #6A7417; 
