@@ -1,0 +1,572 @@
+html{
+    font-family: 'Noto Sans KR', sans-serif;  
+}
+body{
+    margin:0px; 
+}
+.bold{
+    font-weight : bold
+}
+.blue{
+    color: #0057FF;
+}
+.bold{
+    font-weight:bold;
+}
+.grey{
+    color: #A8A8A8;
+}
+.green{
+    color: #72FFA2;
+}
+.red{
+    color: tomato;
+}
+.greyhr{
+    border: 1px solid #dcdcdc
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.float_right{
+    float:right;
+}
+
+.fixedclear::after{
+    content:'';
+    display:block;
+    clear:both;
+}
+
+.button{
+    background-color: white;
+    padding:7px 12px;
+    border-radius: 10px;
+    border: 1px solid #0057FF;
+    font-size:13px;
+    font-family: 'Noto Sans KR', sans-serif;  
+    margin:1px;
+}
+
+.button:hover, .clicked{
+    background-color: #0057FF;
+    color:white;
+    cursor:pointer;
+} 
+.button:hover i, .clicked i{ 
+    color:white !important;  
+}
+
+ 
+#main{
+    display: flex;
+}
+
+#subway_map_container{
+    overflow: hidden;
+}
+
+#subway_map_container, #station_detail_container {  
+    position:relative;
+    width:100%;  
+    min-height: 100vh;
+    /* min-height:100%; */
+}
+
+#station_detail_container {
+    overflow-y: hidden;  
+    overflow-x: auto;
+}
+
+
+ /* #subway_map{  
+    position:absolute;
+    background-image: url('../images/naver_subway.jpg'); 
+    background-position: center;
+    background-size: cover;  
+    width:100%;   
+    min-height:100%;
+}  */
+
+#side_menu{  
+    position:relative;
+    z-index: 1;
+    background-color: white; 
+    min-width:430px;
+    min-height:100%;
+    box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
+}
+
+#side_menu_title{  
+    box-sizing: border-box;
+    padding:40px;
+    width:100%;
+    height:220px; 
+    background: linear-gradient(116.98deg, #6B53FF 18.39%, rgba(107, 83, 255, 0) 119.74%);
+}
+
+#side_menu_title i{
+    font-size: 50px; 
+}
+
+#side_menu_title h2{
+    font-size: 18px;
+    margin: 10px 0px;
+}
+
+#side_menu_title p{
+    font-size: 12px;
+}
+.side_menu_titletxt{
+    text-align: center;
+    color:white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin : 0px;
+}
+
+#side_menu_body{ 
+    box-sizing: border-box;
+    padding : 60px;
+}
+#station_input, #route_input{
+    width:fit-content;
+    margin: 0px auto; 
+    font-size: 14px;
+} 
+#station_input a, #route_input a{
+    float:right;
+    margin-top:3px; 
+    font-size:12px; 
+} 
+
+.side_menu_label{
+    margin: 10px 0px;
+}
+
+.side_menu_input{ 
+    box-sizing: border-box;
+    border: 1px solid #BEBEBE;
+    border-radius: 7px;
+    width: 280px;
+    height: 40px;
+    margin: 5px 0px;
+    padding-left: 30px;
+}
+.icon_input{
+    position:relative;
+
+}
+.placeholder_icon{
+    font-size:15px;
+    color: #72FFA2;
+    position:absolute;
+    top: 50%; 
+    left:10px;
+    transform: translateY(-50%); 
+}
+.side_menu_input::placeholder{ 
+    font-size: 12px;   
+}
+
+#side_menu_body button{ 
+    margin-top:5px;
+}
+.route_change_buttonct{
+    position:relative;  
+}
+.route_change_button{
+    border-radius: 100px !important; 
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index: 1;
+}
+.route_change_button i{ 
+    transform: rotate( 90deg );
+}
+
+#subway_infowindow{
+    box-sizing: border-box;
+    position:absolute;
+    width:250px;
+    height:110px;
+    border-radius:10px;
+    background-color: white;
+    border:1px solid #a8a8a8;
+    box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
+    font-size:14px;
+    text-align: center;
+    padding:15px;     
+    display: none;
+    top:10px; 
+}
+
+#infowindow_btbar{
+    display: flex; 
+}
+
+.infowindow_bt{
+   width:33%;
+   text-align: center;
+}
+
+#subway_infowindow a:hover{
+    cursor:pointer;
+}
+ 
+ 
+.infowindow_bt i{
+    font-size:30px;
+}
+
+.infowindow_sepline{
+    width: 1px; 
+    background-color: #dcdcdc;
+}
+
+
+/* station detail */
+
+.station_detail_container {
+    width:100%;
+}
+.station_detail_linebt {
+    box-sizing: border-box;
+    width:35px; 
+    height:35px;
+    border-radius: 50px;
+    border:none;
+    color:white !important;
+    font-size:15px;  
+    font-weight: bold;
+    padding:0px;
+    margin:3px;
+}
+.station_detail_btline{
+    margin: 60px 0px 0px 40px;
+    white-space: nowrap;
+    line-height: 50px;
+}
+.station_detail_title{
+    position:relative; 
+}
+.station_detail_line {
+    width:1100px;
+    height:15px;
+    border:none;
+    float:left;
+}
+.station_detail_name {
+    position: absolute;
+    float:left;
+    left:430px;
+    top:-40px;
+    width: 200px;
+    height: 75px;
+    background-color: white;
+    border-radius: 90px;
+    text-align: center;
+}
+.station_detail_name button{
+    width: 30px; 
+    height:30px;
+    transform: translateY(-2px); 
+}
+
+.station_detail_name h2{
+    display: inline-block;
+} 
+
+.station_detail_prevnext{ 
+    left:422px; 
+    display: inline-block;
+    background-color: #0057FF; 
+    font-size: 15px; 
+    width:245px;
+    position:relative; 
+}
+
+.station_detail_prevnext a{
+    position:absolute;
+    top:-20px;
+}
+.station_detail_prev{ 
+    left:0px;
+    transform:translateX(-100%);
+}
+.station_detail_next{ 
+    right:0px;
+    transform:translateX(100%);
+}
+
+.station_detail_buttonbar{ 
+    text-align: right;
+    width: 840px; 
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+}
+.station_detail_buttonbar button{
+    font-size:15px;
+}
+
+.station_realtime_container{
+    display: flex;
+    margin-left: 95px;
+    margin-top:20px;
+}
+.station_realtime_refresh{
+    /* background-color: #72FFA2;   */
+    min-width: 180px; 
+    text-align: center;
+    font-size:14px;
+    margin-top:40px;
+}
+.station_realtime{
+    box-sizing: border-box;
+    /* background-color: #0057FF; */
+    min-width: 360px;
+    height:150px;
+    padding:20px;
+    text-align: center;
+}
+ 
+.station_realtime_list {
+    box-sizing: border-box;
+    padding: 10px;
+}
+.station_realtime_list p{
+    display: flex;
+    justify-content: space-between;
+    margin:5px;
+}
+.realtime_message{
+    font-weight: bold;
+    font-size: 17px;
+} 
+
+.station_timetable_container{
+    margin-left: 95px;
+    padding:20px;   
+}
+.station_timetable_buttonbar button{
+    border-radius: 50px;
+    padding: 5px 12px; 
+}
+.station_timetable_buttonbar {
+    box-sizing: border-box;
+    white-space: nowrap;
+    width:865px;
+    min-width:865px;
+    padding:0px 10px;
+    /* background-color: greenyellow; */
+    display: flex;
+    justify-content: space-between;
+}
+.station_timetable, .station_congestion{
+    box-sizing: border-box;
+    width:845px;
+    min-width:845px;
+    height:250px;
+    border : 1px solid #A8A8A8;
+    border-radius: 10px; 
+    margin:10px;
+    display: flex;
+    padding:20px;
+}
+.station_congestion{
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.vertical_sepline{
+    width:1px;
+    height:100%;
+    background-color:#dcdcdc;
+    margin:0px 20px;
+}
+.station_timetable_list{
+    width:50%;
+    text-align: center;
+}
+.station_timetable_list p{
+    margin:0px;
+}
+.station_timetable_list span{
+    font-size:15px;
+}
+.station_timetable_list ul{
+    padding:0px;
+    width:200px;
+    margin:10px auto;
+}
+.station_timetable_list li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin:2px auto; 
+}
+
+.express{
+    display: inline-block;
+    color:tomato;
+    border: 1px solid tomato;
+    border-radius: 100px;
+    font-size:12px !important;
+    width:18px;
+    margin-right:2px;
+}
+
+.container_close{
+    position: absolute;
+    font-size: 20px;
+    left:950px;
+    top:10px;
+}
+.container_close:hover{
+    cursor: pointer;
+}
+
+
+.place_dropdown{
+    box-sizing: border-box;
+    text-align: left;
+    position: absolute;
+    border: 1px solid #A8A8A8;
+    background-color: white;
+    height:fit-content;
+    max-height: 320px; 
+    width: 280px; 
+    white-space:wrap;
+    z-index: 1;
+    border-radius: 10px;
+    padding:15px;
+    overflow: auto;
+    display: none; 
+    box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.15);
+}
+ 
+ 
+.place_dropdown h4{
+    margin:0px;
+    margin-left:10px;
+}
+.place_dropdown hr{
+    margin:0px;
+}
+.place_dropdown i{ 
+    margin-right:2px;
+}
+.place_dropdown ul{ 
+    padding:10px;
+    list-style:none; 
+    margin:0px;
+}
+.place_dropdown i, li{ 
+    line-height: 20px;
+} 
+.place_dropdown li{ 
+    margin:20px 0px;
+} 
+.place_dropdown_list{
+    display: flex; 
+} 
+.place_dropdown_detail{
+    margin-left:4px ; 
+}
+.place_dropdown span{ 
+    font-size:14px;
+    margin:1px; 
+}
+.place_dropdown a {
+    font-size:12px;
+}
+
+.back_link_container{
+    width:1085px;
+    min-width: 1085px;
+    text-align: center;
+    line-height: 50px; 
+}
+#back_link{ 
+    font-size: 13px;
+    text-decoration:underline;
+}
+
+.station_congestion_updown{
+    display: flex; 
+    justify-content: space-around; 
+}
+ 
+.station_congestion_title{
+    display: inline-block;
+}
+.station_congestion_title .grey{
+    font-size:13px;
+    margin-left:3px;
+}
+.station_congestion_bar{
+    display: inline-flex;
+    margin-top: 5px;
+}
+.station_congestion_block{
+    text-align: center; 
+}
+.station_congestion_block span{
+    font-size:12px;
+}
+.station_congestion_color{ 
+    margin:1px;
+    width:65px;
+    height:10px;
+    background-color: #A8A8A8;
+    border-radius: 10px;
+    border:none; 
+    display:block;
+}
+
+ 
+.line-7{
+    background-color : #6A7417; 
+}
+.line-bundang{
+    background-color : #FFCE33; 
+}
+
+#menuWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+
+.line-7-title{
+    border : 15px solid #6A7417; 
+}
+.line-bundang-title{ 
+    border : 15px solid #FFCE33; 
+}
+
+.congested{
+    background-color: #FF5732;
+}
+
+.caution{
+    background-color: #FF9900;
+}
+
+.normal{
+    background-color: #FFF50C;
+}
+
+.space{
+    background-color: #00DC3E;
+}
