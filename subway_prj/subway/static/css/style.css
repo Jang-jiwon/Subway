@@ -191,15 +191,15 @@ a{
 #subway_infowindow{
     box-sizing: border-box;
     position:absolute;
-    width:250px;
-    height:110px;
+    width:230px;
+    height:80px;
     border-radius:10px;
     background-color: white;
     border:1px solid #a8a8a8;
     box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
     font-size:14px;
     text-align: center;
-    padding:15px;     
+    padding:15px 5px;
     display: none;
     top:10px; 
 }

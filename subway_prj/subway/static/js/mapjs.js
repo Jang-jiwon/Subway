@@ -188,3 +188,11 @@ function searchstation(){
 
 
 // })
+
+// ---- 은나현 추가 (팝업창 외의 부분 클릭하면 닫힘)
+document.addEventListener('mouseup', function(e) {
+    var infowindow = document.getElementById('subway_infowindow');
+    if (!infowindow.contains(e.target)) {
+        infowindow.style.display = 'none';
+    }
+});
