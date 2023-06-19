@@ -1,7 +1,6 @@
 placedd = document.querySelector('.place_dropdown');
 placebt = document.querySelector('#placebutton'); 
 
-
 placebt.addEventListener('click', function(){  
     let rect = placebt.getBoundingClientRect();  
     placedd.style.left = (rect.x-650) + "px";

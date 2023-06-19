@@ -1,0 +1,42 @@
+            <div id="side_menu_title">
+                <h1 class="side_menu_titletxt"><i class="fa-solid fa-train-subway"></i></h1>
+                <h2 class="side_menu_titletxt">
+                    안녕하세요,<br>지하철 혼잡도 예측 서비스입니다.
+                </h2>
+                <p class="side_menu_titletxt">
+                    역별, 경로별 예상 혼잡도를 알아보세요.
+                </p>
+            </div>
+            <div id="side_menu_body">
+                <div id="station_input" class="fixedclear">
+                    <div class="side_menu_label">
+                        <label>역 검색하기</label>
+                        <a href="#" class="blue" onclick="clearinput()"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
+                    </div>
+                    <div class="icon_input">
+                        <i class="fa-solid fa-train-subway placeholder_icon"></i>
+                        <input type="text" placeholder="역 이름 입력" class="side_menu_input" id="search_station">
+                    </div>
+                    <button class="button float_right" onclick="searchstation()">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
+                </div>
+                <div style="height:50px;"></div>
+                <div id="route_input">
+                    <div class="side_menu_label">
+                        <label>경로 검색하기</label>
+                        <a href="#" class="blue" onclick="clearroute()"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
+                    </div>
+                    <div class="icon_input">
+                        <i class="fa-solid fa-train-subway placeholder_icon"></i>
+                        <input type="text" placeholder="출발지" class="side_menu_input" id="departure_station">
+                    </div>
+
+                    <div class="route_change_buttonct">
+                        <button class="route_change_button blue button" onclick="routechange()"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+                    </div>
+                    <div class="icon_input">
+                        <i class="fa-solid fa-train-subway placeholder_icon"></i>
+                        <input type="text" placeholder="도착지" class="side_menu_input" id="arrival_station">
+                    </div>
+                    <button class="button float_right">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
+                </div>
+            </div>

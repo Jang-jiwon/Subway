@@ -200,7 +200,8 @@ a{
     font-size:14px;
     text-align: center;
     padding:15px;     
-    z-index: 1;
+    display: none;
+    top:10px; 
 }
 
 #infowindow_btbar{

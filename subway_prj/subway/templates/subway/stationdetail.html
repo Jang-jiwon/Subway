@@ -4,58 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3744ba3e08.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.min.css" />
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
-
 </head>
 <body> 
     <div id="main">
         <div id="side_menu">
-            <div id="side_menu_title">
-                <h1 class="side_menu_titletxt"><i class="fa-solid fa-train-subway"></i></h1>
-                <h2 class="side_menu_titletxt">
-                    안녕하세요,<br>지하철 혼잡도 예측 서비스입니다.
-                </h2>
-                <p class="side_menu_titletxt">
-                    역별, 경로별 예상 혼잡도를 알아보세요.
-                </p>
-            </div>
-            <div id="side_menu_body">
-                <div id="station_input" class="fixedclear">
-                    <div class="side_menu_label">
-                        <label>역 검색하기</label>
-                        <a href="#" class="blue"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
-                    </div>
-                    <div class="icon_input">
-                        <i class="fa-solid fa-train-subway placeholder_icon"></i>
-                        <input type="text" placeholder="역 이름 입력" class="side_menu_input">
-                    </div>
-                    <button class="button float_right">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
-                </div>
-                <div style="height:50px;"></div>
-                <div id="route_input">
-                    <div class="side_menu_label">
-                        <label>경로 검색하기</label>
-                        <a href="#" class="blue"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
-                    </div>
-                    <div class="icon_input">
-                        <i class="fa-solid fa-train-subway placeholder_icon"></i>
-                        <input type="text" placeholder="역 이름 입력" class="side_menu_input">
-                    </div>
-                    <div class="route_change_buttonct"> 
-                        <button class="route_change_button blue button"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
-                    </div>
-                    <div class="icon_input">
-                        <i class="fa-solid fa-train-subway placeholder_icon"></i>
-                        <input type="text" placeholder="역 이름 입력" class="side_menu_input">
-                    </div>
-                    <button class="button float_right">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
-                </div>
-            </div>
+            {% include 'subway/sidemenu.html' %}
         </div>
         
 
@@ -193,5 +152,6 @@
 
     </div>
 </body>
-<script src="./js/detail.js"></script>
+<script src="{% static 'js/detail.js' %}"></script>
+<script src="{% static 'js/mapjs.js' %}"></script>
 </html>

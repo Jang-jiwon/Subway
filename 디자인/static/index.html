@@ -24,30 +24,31 @@
                 <div id="station_input" class="fixedclear">
                     <div class="side_menu_label">
                         <label>역 검색하기</label>
-                        <a href="#" class="blue"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
+                        <a href="#" class="blue" onclick="clearinput()"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
                     </div>
                     <div class="icon_input">
                         <i class="fa-solid fa-train-subway placeholder_icon"></i>
-                        <input type="text" placeholder="역 이름 입력" class="side_menu_input">
+                        <input type="text" placeholder="역 이름 입력" class="side_menu_input" id="search_station">
                     </div>
-                    <button class="button float_right">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
+                    <button class="button float_right" onclick="searchstation()">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
                 </div>
                 <div style="height:50px;"></div>
                 <div id="route_input">
                     <div class="side_menu_label">
                         <label>경로 검색하기</label>
-                        <a href="#" class="blue"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
+                        <a href="#" class="blue" onclick="clearroute()"><i class="fa-solid fa-arrows-rotate"></i> 다시 입력</a>
                     </div>
                     <div class="icon_input">
                         <i class="fa-solid fa-train-subway placeholder_icon"></i>
-                        <input type="text" placeholder="역 이름 입력" class="side_menu_input" id="departure_station">
+                        <input type="text" placeholder="출발지" class="side_menu_input" id="departure_station">
                     </div>
+                    
                     <div class="route_change_buttonct"> 
-                        <button class="route_change_button blue button"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+                        <button class="route_change_button blue button" onclick="routechange()"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
                     </div>
                     <div class="icon_input">
                         <i class="fa-solid fa-train-subway placeholder_icon"></i>
-                        <input type="text" placeholder="역 이름 입력" class="side_menu_input" id="arrival_station">
+                        <input type="text" placeholder="도착지" class="side_menu_input" id="arrival_station">
                     </div>
                     <button class="button float_right">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
                 </div>
@@ -559,7 +560,7 @@
                                 <text x = "1260" y = "2063" font-size = "10">서동탄</text>
                                 <circle onclick = "callStation(this.id)" id = "1717" cx = "1200" cy = "2060" r = "5" stroke = "#00498B" stroke-width = "1" fill = "white"/>
                                 <text x = "1210" y = "2063" font-size = "10">세마</text>
-                                <circle onclick = "callStation(this.id)" id = "1718" cx = "1150" cy = "2110" r = "5" stroke = "#00498B" stroke-width = "1" fill = "white"/>
+                                <circle onclick = "callStation(this.id)-" id = "1718" cx = "1150" cy = "2110" r = "5" stroke = "#00498B" stroke-width = "1" fill = "white"/>
                                 <text x = "1160" y = "2113" font-size = "10">오산대</text>
                                 <circle onclick = "callStation(this.id)" id = "1719" cx = "1100" cy = "2160" r = "5" stroke = "#00498B" stroke-width = "1" fill = "white"/>
                                 <text x = "1110" y = "2163" font-size = "10">오산</text>
@@ -1753,10 +1754,14 @@
                     </svg>
                 </div>
             </div>
+            <div id="subway_infowindow">
+
+            </div>
         </div>
     </div>
 </body>
-<script src="./js/index.js"></script>
+<!-- <script src="./js/index.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/panzoom.js"></script>
 <script>
         var area = document.getElementById('zoomable');
@@ -1765,6 +1770,8 @@
         // function callStation(inputID){
         //         location.href = `./station.html?${inputID.split("X")[0]}`;
         //     }
+
+
         function departure(inputID){
             var stationElement = document.getElementById(inputID);
             stationName = stationElement.nextElementSibling.textContent;
@@ -1779,40 +1786,177 @@
             document.querySelector('#arrival_station').value = stationName;
         }
 
-        function callStation(inputID) {
-            var menuWindow = document.getElementById('menuWindow');
+        // function callStation(inputID) {
+        //     var menuWindow = document.getElementById('menuWindow');
+        //     // text값 받기
+        //     var dp = document.querySelector('#departure_station').value;
+        //     var ar = document.querySelector('#arrival_station').value;
+
+
+        //     // 메뉴 창이 이미 열려있으면 닫고, 닫혀있으면 열기
+        //     if (menuWindow) {
+        //         document.body.removeChild(menuWindow);
+        //     } else {
+        //         menuWindow = document.createElement('div');
+        //         menuWindow.id = 'menuWindow';
+
+        //         // 메뉴 창 내용 추가
+        //         menuWindow.innerHTML = `
+        //         <div id="menuList">
+        //             <button><a href="#" onclick="departure('${inputID}')">출발</a></button>
+        //             <button><a href="#" onclick="arrival('${inputID}')">도착</a></button>
+        //             <button><a href="#">혼잡 예측</a></button>
+        //             <button><a href="./station.html?${inputID.split("X")[0]}">역 상세 정보</a></button>
+        //         `;
+
+        //         document.body.appendChild(menuWindow);
+        //     }
+        // }
+
+        function callStation(inputID, event) {
+            var infowindow = document.getElementById('subway_infowindow');
+
             // text값 받기
             var dp = document.querySelector('#departure_station').value;
             var ar = document.querySelector('#arrival_station').value;
 
+            
+            // var x = event.clientX;
+            // var y = event.clientY;
+            // console.log("마우스 위치 x : " + x);
+            // console.log("마우스 위치 y : " + y);
 
             // 메뉴 창이 이미 열려있으면 닫고, 닫혀있으면 열기
-            if (menuWindow) {
-                document.body.removeChild(menuWindow);
-            } else {
-                menuWindow = document.createElement('div');
-                menuWindow.id = 'menuWindow';
-
+            if (infowindow.style.display == 'block') {
+               // document.body.removeChild(infowindow);
+               infowindow.style.display = 'none'
+            } else { 
+                //placedd = document.querySelector(`#${inputID}`);
                 // 메뉴 창 내용 추가
-                menuWindow.innerHTML = `
-                <div id="menuList">
-                    <button><a href="#" onclick="departure('${inputID}')">출발</a></button>
-                    <button><a href="#" onclick="arrival('${inputID}')">도착</a></button>
-                    <button><a href="#">혼잡 예측</a></button>
-                    <button><a href="./station.html?${inputID.split("X")[0]}">역 상세 정보</a></button>
+                infowindow.innerHTML = `
+                    <div id="infowindow_btbar">
+                        <div class="infowindow_bt">
+                            <a onclick="departure('${inputID}')">
+                                <i class="fa-solid fa-location-dot green"></i><br>
+                                <span>출발</span>
+                            </a>
+                        </div>
+                        <div class="infowindow_sepline"></div>
+                        <div class="infowindow_bt">
+                            <a onclick="arrival('${inputID}')">
+                                <i class="fa-solid fa-location-dot red"></i><br>
+                                <span>도착</span>
+                            </a>
+                        </div>
+                        <div class="infowindow_sepline"></div>
+                        <div class="infowindow_bt">
+                            <a href="./station.html?${inputID.split("X")[0]}">
+                                <i class="fa-solid fa-magnifying-glass blue"></i><br>
+                                <span>역 정보</span>
+                            </a>
+                        </div>                    
+                    </div>
                 `;
+                infowindow.style.display = 'block' 
+                //document.body.appendChild(infowindow);
 
-                document.body.appendChild(menuWindow);
+                // Get the position of the clicked circle
+                var circle = document.getElementById(inputID);
+                var cx = circle.getAttribute('cx');
+
+                rect = circle.getBoundingClientRect();
+                
+                var rx = rect.x; 
+                var ry = rect.y;
+                
+
+                infowindow.style.left = (rx-550) + 'px';
+                infowindow.style.top = (ry+30) + 'px';
+                infowindow.style.display = 'block';
+
             }
         }
-
-
         
-
         function showLine(lineNumber){
                 $("#zoomable").children("g").css("visibility", "hidden");
                 $(`#${lineNumber}`).css("visibility", "visible");
+        }
+
+        function clearinput(){
+            var input = document.getElementById('search_station');
+            input.value = '';
+        }
+
+        function clearroute(){
+            var ds = document.getElementById('departure_station');
+            var as = document.getElementById('arrival_station');
+
+            ds.value = '';
+            as.value = '';
+        }
+
+        function routechange(){
+            var ds = document.getElementById('departure_station').value;
+            var as = document.getElementById('arrival_station').value;
+
+            if(ds==''){
+                alert('출발지가 없습니다.')
             }
+            if(as==''){
+                alert('도착지가 없습니다.')
+            }
+            
+            var temp = ds;
+            ds = as;
+            as = temp;
+        
+            // 교환된 값을 다시 입력 필드에 설정합니다.
+            document.getElementById('departure_station').value = ds;
+            document.getElementById('arrival_station').value = as;
+            
+        }
+
+
+
+        function searchstation(){
+            var searchInput = document.getElementById("search_station").value;
+
+            var stationElements = document.getElementsByTagName("text");
+            var stationId = null;
+
+            for (var i = 0; i < stationElements.length; i++) {
+            if (stationElements[i].textContent === searchInput) {
+                stationId = stationElements[i].previousElementSibling.getAttribute("id");
+                break;
+            }
+            }
+
+            if (stationId) {
+                callStation(stationId);
+                stationId.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                // Station not found
+                alert("역을 찾을 수가 없습니다.");
+            }
+
+        }
+
+        // $('#search_station').addEventListener('keyup',function(){
+        //     var stationElements = document.getElementsByTagName("text");
+        //     var stationArr = [];
+            
+        //     for (var i = 0; i < stationElements.length; i++) {
+        //         var stationElement = stationElements[i];
+        //         var stationName = stationElement.textContent;
+        //         stationArr.push(stationName);
+        //     }
+
+        //     var arr = [];
+        //     var searchWord = $('#search_station').value;
+
+
+        // })
+   
 
 </script>
 </html>
