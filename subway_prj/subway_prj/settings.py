@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'subway_prj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'python',
-        'USER': 'python',
-        'PASSWORD': 'python',
+        'NAME': 'subway',
+        'USER': 'subway',
+        'PASSWORD': 'subway',
         'HOST': 'localhost',  # MySQL 서버 호스트
         'PORT': '3306',  # MySQL 포트 번호
     }
