@@ -82,7 +82,7 @@ function callStation(inputID, event) {
                 </div>
                 <div class="infowindow_sepline"></div>
                 <div class="infowindow_bt">
-                    <a href="./station.html?${inputID.split("X")[0]}">
+                    <a href="./stationdetail?${inputID.split("X")[0]}">
                         <i class="fa-solid fa-magnifying-glass blue"></i><br>
                         <span>역 정보</span>
                     </a>
@@ -102,8 +102,8 @@ function callStation(inputID, event) {
         var ry = rect.y;
 
 
-        infowindow.style.left = (rx-550) + 'px';
-        infowindow.style.top = (ry+30) + 'px';
+        infowindow.style.left = (rx-530) + 'px';
+        infowindow.style.top = (ry-100) + 'px';
         infowindow.style.display = 'block';
 
     }
@@ -195,4 +195,9 @@ document.addEventListener('mouseup', function(e) {
     if (!infowindow.contains(e.target)) {
         infowindow.style.display = 'none';
     }
+});
+
+document.addEventListener('wheel', function(e) {
+    var infowindow = document.getElementById('subway_infowindow');
+    infowindow.style.display = 'none';
 });
