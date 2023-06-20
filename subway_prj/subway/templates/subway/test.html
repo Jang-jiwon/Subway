@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-ddddd
+{% for station in stations %}
+  {{station.station_name}}
+{% endfor %}
+<br>
+{% for tourspot in tourspots %}
+  {{tourspot.tourspot_name}}
+{% endfor %}
+<br>
+{% for congestion in congestions %}
+  {{congestion.serial_number}}
+{% endfor %}
 </body>
 </html>

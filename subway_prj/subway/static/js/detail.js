@@ -1,6 +1,6 @@
 placedd = document.querySelector('.place_dropdown');
 placebt = document.querySelector('#placebutton'); 
-
+refresh = document.getElementById('station_realtime_refresh');
 
 placebt.addEventListener('click', function(){  
     let rect = placebt.getBoundingClientRect();  
@@ -14,3 +14,7 @@ document.addEventListener('mouseup', function(e) {
         placedd.style.display = 'none';
     }
 });
+
+refresh.addEventListener('click', function(){
+    location.reload();
+})

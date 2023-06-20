@@ -319,11 +319,13 @@ a{
     margin-top:20px;
 }
 .station_realtime_refresh{
-    /* background-color: #72FFA2;   */
     min-width: 180px; 
     text-align: center;
     font-size:14px;
     margin-top:40px;
+}
+#station_realtime_refresh:hover{
+    cursor:pointer;
 }
 .station_realtime{
     box-sizing: border-box;
