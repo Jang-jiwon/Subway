@@ -246,6 +246,7 @@ a{
     margin:3px;
 }
 .station_detail_btline{
+    width:910px;
     margin: 60px 0px 0px 40px;
     white-space: nowrap;
     line-height: 50px;
@@ -262,9 +263,9 @@ a{
 .station_detail_name {
     position: absolute;
     float:left;
-    left:430px;
+    left:395px;
     top:-40px;
-    width: 200px;
+    width: 265px;
     height: 75px;
     background-color: white;
     border-radius: 90px;
@@ -280,12 +281,13 @@ a{
     display: inline-block;
 } 
 
-.station_detail_prevnext{ 
-    left:422px; 
+.station_detail_prevnext{
+    content:'';
+    left:390px;
     display: inline-block;
     background-color: #0057FF; 
     font-size: 15px; 
-    width:245px;
+    width:300px;
     position:relative; 
 }
 
@@ -304,7 +306,7 @@ a{
 
 .station_detail_buttonbar{ 
     text-align: right;
-    width: 840px; 
+    float:right;
     white-space: nowrap;
     display: inline-block;
     position: relative;
@@ -530,14 +532,6 @@ a{
     display:block;
 }
 
- 
-.line-7{
-    background-color : #6A7417; 
-}
-.line-bundang{
-    background-color : #FFCE33; 
-}
-
 #menuWindow {
     position: fixed;
     top: 50%;
@@ -549,11 +543,29 @@ a{
     border: 1px solid #ccc;
     padding: 20px;
   }
+.line-1{    background-color : #263C96; }
+.line-2{    background-color : #59B543; }
+.line-3{    background-color : #E36900; }
+.line-4{    background-color : #4DA0E0; }
+.line-5{    background-color : #8337E4; }
+.line-6{    background-color : #AB4C00; }
+.line-7{    background-color : #6A7204; }
+.line-8{    background-color : #D6006E; }
 
-.line-7-title{
-    border : 15px solid #6A7417; 
+.line-1-title{    border : 15px solid #263C96; }
+.line-2-title{    border : 15px solid #59B543; }
+.line-3-title{    border : 15px solid #E36900; }
+.line-4-title{    border : 15px solid #4DA0E0; }
+.line-5-title{    border : 15px solid #8337E4; }
+.line-6-title{    border : 15px solid #AB4C00; }
+.line-7-title{    border : 15px solid #6A7204; }
+.line-8-title{    border : 15px solid #D6006E; }
+
+
+.line-bundang{
+    background-color : #FFCE33;
 }
-.line-bundang-title{ 
+.line-bundang-title{
     border : 15px solid #FFCE33; 
 }
 

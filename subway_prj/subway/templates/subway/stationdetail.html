@@ -12,17 +12,25 @@
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.min.css" />
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
 </head>
-<body> 
+<body>
     <div id="main">
         {% include 'subway/side_menu.html' %}
 
+        {% with line=station.line|slice:"1:2" %}
         <div id="station_detail_container">
 
             <a class="container_close"><i class="fa-solid fa-xmark blue"></i></a>
 
+
             <div class="station_detail_btline">
-                <button class="station_detail_linebt line-7">7</button>
-                <button class="station_detail_linebt line-bundang">수</button>
+                {% for station in stations %}
+                    {% with line=station.line|slice:"1:2" %}
+                    <button class="station_detail_linebt line-{{line}}"
+                            onclick="location.href='./{{station.station_code}}'">{{line}}</button>
+                    {% endwith %}
+                {% endfor %}
+<!--                <button class="station_detail_linebt line-7">7</button>-->
+<!--                <button class="station_detail_linebt line-bundang">수</button>-->
                 <div class="station_detail_buttonbar">
                     <button class="button" id="placebutton" >주변 장소 <i class="fa-solid fa-location-dot blue"></i></button>
                     <button class="button">혼잡도 예측 <i class="fa-solid fa-magnifying-glass blue"></i></button>
@@ -59,10 +67,10 @@
                 </div>
             </div>
             <div class="station_detail_title fixedclear">
-                <hr class="station_detail_line line-bundang">
-                <div class="station_detail_name line-bundang-title">
-                    <button class="station_detail_linebt line-bundang">수</button>
-                    <h2>강남구청</h2>
+                <hr class="station_detail_line line-{{line}}">
+                <div class="station_detail_name line-{{line}}-title">
+                    <button class="station_detail_linebt line-{{line}}">{{line}}</button>
+                    <h2>{{ station.station_name }}</h2>
                 </div>
                 <div class="station_detail_prevnext">  
                     <a href="#" class="station_detail_prev">
@@ -145,7 +153,7 @@
             </div>
  
         </div>
-
+        {% endwith %}
 
 
     </div>

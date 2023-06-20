@@ -82,7 +82,7 @@ function callStation(inputID, event) {
                 </div>
                 <div class="infowindow_sepline"></div>
                 <div class="infowindow_bt">
-                    <a href="./stationdetail?${inputID.split("X")[0]}">
+                    <a href="./stationdetail/${inputID}/">
                         <i class="fa-solid fa-magnifying-glass blue"></i><br>
                         <span>역 정보</span>
                     </a>
