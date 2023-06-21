@@ -436,6 +436,7 @@ a{
 
 
 .place_dropdown{
+    left:0px !important;
     box-sizing: border-box;
     text-align: left;
     position: absolute;
