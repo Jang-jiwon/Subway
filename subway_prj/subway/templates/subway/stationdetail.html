@@ -110,46 +110,12 @@
                 <div class="station_timetable_buttonbar">
                     <span>열차 시간표</span>
                     <div>
-                        <button class="button">평일</button>
-                        <button class="button">토요일</button>
-                        <button class="button">휴일</button>
+                        <button class="button days clicked" id="bt1">평일</button>
+                        <button class="button days" id="bt2">토요일</button>
+                        <button class="button days" id="bt3">휴일</button>
                     </div>
                 </div>
-                <div class="station_timetable" >
-                    <div class="station_timetable_list" data-simplebar>
-                        <p>{{station.line.upend_station}} 방면</p>
-                        <span class="grey">상행</span>
-                        <ul>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span><span class="express">급</span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                            <li><span>05:44</span><span>왕십리행</span></li>
-                        </ul> 
-                    </div>
-                    <div class="vertical_sepline"></div>
-                    <div class="station_timetable_list" data-simplebar>
-                        <p>{{station.line.downend_station}} 방면</p>
-                        <span class="grey">하행</span>
-                        <ul>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                            <li><span>05:44</span><span><span class="express">급</span>고색행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                            <li><span>05:44</span><span>고색행</span></li>
-                            <li><span>05:44</span><span>인천행</span></li>
-                        </ul> 
-                    </div>
-                </div>
+                {% include 'subway/timetable.html' %}
             </div>
  
         </div>

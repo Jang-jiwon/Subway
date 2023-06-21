@@ -1,0 +1,101 @@
+{% block timetable %}
+    <div class="station_timetable" id="timetable_1">
+        <div class="station_timetable_list" data-simplebar>
+            <p>{{station.line.upend_station}} 방면</p>
+            <span class="grey">상행</span>
+            <ul>
+                {% for rows in timetable.1.1 %}
+                    {% if rows.ARRIVETIME|slice:"0:2"|add:"0" >= 5 %}
+                         <li><span>{{ rows.ARRIVETIME|slice:"0:2"}} : {{ rows.ARRIVETIME|slice:"3:5"}}</span><span>
+                        {% if rows.EXPRESS_YN == 'D' %}
+                            <span class="express">급</span>
+                        {% endif %}
+                            {{ rows.SUBWAYENAME }}행</span></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="vertical_sepline"></div>
+        <div class="station_timetable_list" data-simplebar>
+            <p>{{station.line.downend_station}} 방면</p>
+            <span class="grey">하행</span>
+            <ul>
+                {% for rows in timetable.1.2 %}
+                    {% if rows.ARRIVETIME|slice:"0:2"|add:"0" >= 5 %}
+                         <li><span>{{ rows.ARRIVETIME|slice:"0:2"}} : {{ rows.ARRIVETIME|slice:"3:5"}}</span><span>
+                        {% if rows.EXPRESS_YN == 'D' %}
+                            <span class="express">급</span>
+                        {% endif %}
+                            {{ rows.SUBWAYENAME }}행</span></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="station_timetable" id="timetable_2"  style="display:none">
+        <div class="station_timetable_list" data-simplebar>
+            <p>{{station.line.upend_station}} 방면</p>
+            <span class="grey">상행</span>
+            <ul>
+                {% for rows in timetable.2.1 %}
+                    {% if rows.ARRIVETIME|slice:"0:2"|add:"0" >= 5 %}
+                         <li><span>{{ rows.ARRIVETIME|slice:"0:2"}} : {{ rows.ARRIVETIME|slice:"3:5"}}</span><span>
+                        {% if rows.EXPRESS_YN == 'D' %}
+                            <span class="express">급</span>
+                        {% endif %}
+                            {{ rows.SUBWAYENAME }}행</span></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="vertical_sepline"></div>
+        <div class="station_timetable_list" data-simplebar>
+            <p>{{station.line.downend_station}} 방면</p>
+            <span class="grey">하행</span>
+            <ul>
+                {% for rows in timetable.2.2 %}
+                    {% if rows.ARRIVETIME|slice:"0:2"|add:"0" >= 5 %}
+                         <li><span>{{ rows.ARRIVETIME|slice:"0:2"}} : {{ rows.ARRIVETIME|slice:"3:5"}}</span><span>
+                        {% if rows.EXPRESS_YN == 'D' %}
+                            <span class="express">급</span>
+                        {% endif %}
+                            {{ rows.SUBWAYENAME }}행</span></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="station_timetable" id="timetable_3"  style="display:none">
+        <div class="station_timetable_list" data-simplebar>
+            <p>{{station.line.upend_station}} 방면</p>
+            <span class="grey">상행</span>
+            <ul>
+                {% for rows in timetable.3.1 %}
+                    {% if rows.ARRIVETIME|slice:"0:2"|add:"0" >= 5 %}
+                         <li><span>{{ rows.ARRIVETIME|slice:"0:2"}} : {{ rows.ARRIVETIME|slice:"3:5"}}</span><span>
+                        {% if rows.EXPRESS_YN == 'D' %}
+                            <span class="express">급</span>
+                        {% endif %}
+                            {{ rows.SUBWAYENAME }}행</span></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="vertical_sepline"></div>
+        <div class="station_timetable_list" data-simplebar>
+            <p>{{station.line.downend_station}} 방면</p>
+            <span class="grey">하행</span>
+            <ul>
+                {% for rows in timetable.3.2 %}
+                    {% if rows.ARRIVETIME|slice:"0:2"|add:"0" >= 5 %}
+                         <li><span>{{ rows.ARRIVETIME|slice:"0:2"}} : {{ rows.ARRIVETIME|slice:"3:5"}}</span><span>
+                        {% if rows.EXPRESS_YN == 'D' %}
+                            <span class="express">급</span>
+                        {% endif %}
+                            {{ rows.SUBWAYENAME }}행</span></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

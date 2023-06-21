@@ -45,10 +45,34 @@ class detail(ListView) :
         context['ids'] = ids
         context['stations'] = stations
 
+        url = 'http://openapi.seoul.go.kr:8088/736f67684a646d733339556f7a726d/json/SearchSTNTimeTableByIDService/1/250/'
+
         if self.kwargs.get('code') :
-            context['station'] = Station.objects.get(station_code=self.kwargs['code'])
+            station = Station.objects.get(station_code=self.kwargs['code'])
+            context['station'] = station
+            url += '%04d'%(station.station_code)+'/'
+
         else :
             context['station'] = stations[0]
+            url += '%04d' % (stations[0].station_code) + '/'
+
+        timetable = dict()
+
+        days = {'1': '평일', '2': '토요일', '3': '휴일/일요일'}
+        inouts = {'1': '상행', '2': '하행'}
+
+        for day in days:
+            sub_table = dict()
+            for inout in inouts:
+                response = requests.get('{}{}/{}/'.format(url, day, inout))
+                data = response.json()
+                list = data['SearchSTNTimeTableByIDService']['row']
+
+                sub_table[inout] = list
+
+            timetable[day] = sub_table
+
+        context['timetable'] = timetable
 
         return context
     # def get(self, request):
@@ -91,10 +115,10 @@ def test(request):
             data = response.json()
             list = data['SearchSTNTimeTableByIDService']['row']
 
-            sub_table[inout] = list[0]
+            sub_table[inout] = list
 
         timetable[day] = sub_table
 
-    print(timetable)
+    # print(timetable)
     return render(request, 'subway/test.html', {'stations': stations, 'tourspots': tourspots,'congestions': congestions,
                                                 'timetable': timetable})
