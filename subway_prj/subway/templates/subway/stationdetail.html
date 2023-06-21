@@ -16,7 +16,7 @@
     <div id="main">
         {% include 'subway/side_menu.html' %}
 
-        {% with line=station.line|slice:"1:2" %}
+        {% with linenum=station.line.serial_number  %}
         <div id="station_detail_container">
 
             <a class="container_close"><i class="fa-solid fa-xmark blue"></i></a>
@@ -24,9 +24,9 @@
 
             <div class="station_detail_btline">
                 {% for station in stations %}
-                    {% with line=station.line|slice:"1:2" %}
-                    <button class="station_detail_linebt line-{{line}}"
-                            onclick="location.href='./{{station.station_code}}'">{{line}}</button>
+                    {% with linenum=station.line.serial_number  %}
+                    <button class="station_detail_linebt line-{{linenum}}"
+                            onclick="location.href='./{{station.station_code}}'">{{linenum}}</button>
                     {% endwith %}
                 {% endfor %}
 <!--                <button class="station_detail_linebt line-7">7</button>-->
@@ -67,9 +67,9 @@
                 </div>
             </div>
             <div class="station_detail_title fixedclear">
-                <hr class="station_detail_line line-{{line}}">
-                <div class="station_detail_name line-{{line}}-title">
-                    <button class="station_detail_linebt line-{{line}}">{{line}}</button>
+                <hr class="station_detail_line line-{{linenum}}">
+                <div class="station_detail_name line-{{linenum}}-title">
+                    <button class="station_detail_linebt line-{{linenum}}">{{linenum}}</button>
                     <h2>{{ station.station_name }}</h2>
                 </div>
                 <div class="station_detail_prevnext">  
@@ -86,7 +86,7 @@
 
             <div class="station_realtime_container">
                 <div class="station_realtime">
-                    <span>청량리 방면</span>
+                    <span>{{station.line.upend_station}} 방면</span>
                     <hr class="greyhr">
                     <div class="station_realtime_list">
                         <p><span class="realtime_label">왕십리행</span><span class="realtime_message blue">1분 후 도착</span></p>
@@ -97,7 +97,7 @@
                     <a id="station_realtime_refresh"><span class="grey">{{nowtime}} 기준 </span><i class="fa-solid fa-arrows-rotate blue"></i></a>
                 </div>
                 <div class="station_realtime">
-                    <span>인천 방면</span>
+                    <span>{{station.line.downend_station}} 방면</span>
                     <hr class="greyhr">
                     <div class="station_realtime_list">
                         <p><span class="realtime_label">고색행</span><span class="realtime_message blue">전역 도착</span></p>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="station_timetable" >
                     <div class="station_timetable_list" data-simplebar>
-                        <p>청량리 방면</p>
+                        <p>{{station.line.upend_station}} 방면</p>
                         <span class="grey">상행</span>
                         <ul>
                             <li><span>05:44</span><span>왕십리행</span></li>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="vertical_sepline"></div>
                     <div class="station_timetable_list" data-simplebar>
-                        <p>인천 방면</p>
+                        <p>{{station.line.downend_station}} 방면</p>
                         <span class="grey">하행</span>
                         <ul>
                             <li><span>05:44</span><span>고색행</span></li>

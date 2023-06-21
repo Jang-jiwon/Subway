@@ -9,10 +9,19 @@ from django.db import models
 #     Lat = models.FloatField
 #     Lng = models.FloatField
 
+class Line(models.Model):
+    serial_number = models.IntegerField(db_column='Serial_Number', primary_key=True)
+    line = models.CharField(db_column='Line', unique=True, max_length=100, blank=True, null=True)
+    upend_station = models.CharField(db_column='UpEnd_Station', max_length=100, blank=True, null=True)
+    downend_station = models.CharField(db_column='DownEnd_Station', max_length=100, blank=True, null=True)
+    class Meta:
+        managed = False
+        db_table = 'line'
+
 class Station(models.Model):
     station_name = models.CharField(db_column='Station_Name', max_length=100, blank=True, null=True)
     station_code = models.IntegerField(db_column='Station_Code', primary_key=True)
-    line = models.CharField(db_column='Line', max_length=100, blank=True, null=True)
+    line = models.ForeignKey(Line, models.PROTECT, to_field='line', db_column='Line', blank=True, null=True)
     out_code = models.CharField(db_column='Out_Code', max_length=100, blank=True, null=True)
     lat = models.FloatField(db_column='Lat', blank=True, null=True)
     lng = models.FloatField(db_column='Lng', blank=True, null=True)
