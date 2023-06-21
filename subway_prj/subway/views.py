@@ -1,7 +1,7 @@
 from datetime import datetime
 
-import requests
-from django.http import HttpResponse
+from django.db.models import Q
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -122,3 +122,13 @@ def test(request):
     # print(timetable)
     return render(request, 'subway/test.html', {'stations': stations, 'tourspots': tourspots,'congestions': congestions,
                                                 'timetable': timetable})
+def SearchId(request, q):
+    try:
+        stations = Station.objects.filter(station_name=q)
+        if stations.exists():
+            stationIds = [station.station_code for station in stations]
+            return JsonResponse({'stationIds': stationIds})
+        else:
+            return JsonResponse({'stationIds': []})
+    except Station.DoesNotExist:
+        return JsonResponse({'stationIds': []})
