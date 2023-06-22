@@ -5,17 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-{% for station in stations %}
-  {{station.line}}
-{% endfor %}
-<br>
-{% for tourspot in tourspots %}
-  {{tourspot.tourspot_name}}
-{% endfor %}
-<br>
-{% for congestion in congestions %}
-  {{congestion.serial_number}}
-{% endfor %}
+<!--{% for station in stations %}-->
+<!--  {{station.line}}-->
+<!--{% endfor %}-->
+<!--<br>-->
+<!--{% for tourspot in tourspots %}-->
+<!--  {{tourspot.tourspot_name}}-->
+<!--{% endfor %}-->
+<!--<br>-->
+<!--{% for congestion in congestions %}-->
+<!--  {{congestion.serial_number}}-->
+<!--{% endfor %}-->
 
 <!--{{ timetable.1.1 }} <br><br>-->
 <!--{{ timetable.1.2 }} <br><br>-->
@@ -24,12 +24,24 @@
 <!--{{ timetable.3.1 }} <br><br>-->
 <!--{{ timetable.3.2 }} <br><br>-->
 
-{% for row in timetable.1.1 %}
-    {{ row.ARRIVETIME }}
-    {{ row.LEFTTIME }}
-    {{ row.SUBWAYENAME }}
-    {{ row.EXPRESS_YN }}
-    <br>
+<!--{% for row in timetable.1.1 %}-->
+<!--    {{ row.ARRIVETIME }}-->
+<!--    {{ row.LEFTTIME }}-->
+<!--    {{ row.SUBWAYENAME }}-->
+<!--    {{ row.EXPRESS_YN }}-->
+<!--    <br>-->
+<!--{% endfor %}-->
+
+{% for row in list %}
+    호선 {{ row.subwayId }} &nbsp;&nbsp;
+    상하행 {{ row.updnLine }} &nbsp;&nbsp;
+    ~행  {{ row.trainLineNm }}&nbsp;&nbsp;
+    순번코드 {{ row.ordkey }}&nbsp;&nbsp;
+    일반/급행 {{ row.btrainSttus }}&nbsp;&nbsp;
+    몇분후도착 {{ row.barvlDt }}&nbsp;&nbsp;
+    도착메시지 {{ row.arvlMsg2 }}&nbsp;&nbsp;
+    도착메시지 {{ row.arvlMsg3 }}&nbsp;&nbsp;
+    운행상태 {{ row.arvlCd }} <br>
 {% endfor %}
 </body>
 </html>

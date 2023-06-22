@@ -19,7 +19,7 @@
         {% with linenum=station.line.serial_number  %}
         <div id="station_detail_container">
 
-            <a class="container_close"><i class="fa-solid fa-xmark blue"></i></a>
+            <a class="container_close" href="/map/"><i class="fa-solid fa-xmark blue"></i></a>
 
 
             <div class="station_detail_btline">
@@ -85,12 +85,18 @@
 
 
             <div class="station_realtime_container">
-                <div class="station_realtime">
+                <div class="station_realtime" >
                     <span>{{station.line.upend_station}} 방면</span>
                     <hr class="greyhr">
-                    <div class="station_realtime_list">
-                        <p><span class="realtime_label">왕십리행</span><span class="realtime_message blue">1분 후 도착</span></p>
-                        <p><span class="realtime_label">왕십리행</span><span class="realtime_message blue">4분 후 도착</span></p> 
+                    <div class="station_realtime_list" data-simplebar>
+                        {% for row in arrival.up %}
+                            <p><span class="realtime_label">{{ row.toStation }}</span>
+                                <span class="realtime_message blue">
+                                    {% if row.btrainSttus == '급행' %}
+                                        <span style="color:tomato;">급 &nbsp;</span>
+                                    {% endif %}
+                                    {{ row.message  }}</span></p>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="station_realtime_refresh" >
@@ -99,10 +105,16 @@
                 <div class="station_realtime">
                     <span>{{station.line.downend_station}} 방면</span>
                     <hr class="greyhr">
-                    <div class="station_realtime_list">
-                        <p><span class="realtime_label">고색행</span><span class="realtime_message blue">전역 도착</span></p>
-                        <p><span class="realtime_label">고색행</span><span class="realtime_message blue">2분 후 도착</span></p> 
-                    </div>                   
+                    <div class="station_realtime_list" data-simplebar>
+                        {% for row in arrival.dn %}
+                            <p><span class="realtime_label">{{ row.toStation }}</span>
+                                <span class="realtime_message blue">
+                                    {% if row.btrainSttus == '급행' %}
+                                        <span style="color:tomato;">급 &nbsp;</span>
+                                    {% endif %}
+                                    {{ row.message  }}</span></p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
 
@@ -117,10 +129,10 @@
                 </div>
                 {% include 'subway/timetable.html' %}
             </div>
- 
+
+
         </div>
         {% endwith %}
-
 
     </div>
 </body>

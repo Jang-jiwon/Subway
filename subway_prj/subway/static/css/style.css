@@ -319,6 +319,7 @@ a{
     display: flex;
     margin-left: 95px;
     margin-top:20px;
+    overflow:hidden;
 }
 .station_realtime_refresh{
     min-width: 180px; 
@@ -341,6 +342,7 @@ a{
 .station_realtime_list {
     box-sizing: border-box;
     padding: 10px;
+    height:75px;
 }
 .station_realtime_list p{
     display: flex;
