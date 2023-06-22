@@ -161,10 +161,10 @@ function searchstation(){
     var stationId = null;
 
     for (var i = 0; i < stationElements.length; i++) {
-    if (stationElements[i].textContent === searchInput) {
-        stationId = stationElements[i].previousElementSibling.getAttribute("id");
-        break;
-    }
+        if (stationElements[i].textContent === searchInput) {
+            stationId = stationElements[i].previousElementSibling.getAttribute("id");
+            break;
+        }
     }
 
     if (stationId) {
@@ -175,6 +175,35 @@ function searchstation(){
         alert("역을 찾을 수가 없습니다.");
     }
 
+}
+
+function stationinfo() {
+    var searchInput = document.getElementById("search_station").value;
+
+    // AJAX를 사용하여 서버에 역 정보를 요청합니다.
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/map/searchId/" + searchInput + "/", true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var stationData = JSON.parse(xhr.responseText);
+
+            if (stationData.stationIds && stationData.stationIds.length > 0) {
+                var combinedId;
+                if (stationData.stationIds.length === 1) {
+                    combinedId = stationData.stationIds[0];
+                } else {
+                    combinedId = stationData.stationIds.join("x");
+                }
+                location.href = "/map/stationdetail/" + combinedId + "/";
+            } else {
+                alert("역을 찾을 수가 없습니다.");
+            }
+        } else {
+            // Error handling
+            console.error('Request failed. Status:', xhr.status);
+        }
+    };
+    xhr.send();
 }
 
 // $('#search_station').addEventListener('keyup',function(){
