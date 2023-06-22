@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db.models import Q
+import requests
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
@@ -132,3 +133,19 @@ def SearchId(request, q):
             return JsonResponse({'stationIds': []})
     except Station.DoesNotExist:
         return JsonResponse({'stationIds': []})
+
+
+def SearchStation(request, id):
+    ids = id.split('x')
+    stations = []
+    for id in ids:
+        stations.append(Station.objects.get(station_code=id))
+
+    stationjson = {}
+    for station in stations :
+        sub_station = {}
+        sub_station['line'] = station.line.serial_number
+        sub_station['name'] = station.station_name
+        stationjson[station.station_code] = sub_station
+
+    return JsonResponse(stationjson)

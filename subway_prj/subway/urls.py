@@ -10,4 +10,5 @@ urlpatterns = [
     path('map/test', views.test),
 
     path('map/searchId/<str:q>/', views.SearchId),
+    path('map/searchStation/<str:id>/', views.SearchStation),
 ]

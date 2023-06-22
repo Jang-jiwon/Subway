@@ -47,7 +47,7 @@ function arrival(inputID){
 
 function callStation(inputID, event) {
     var infowindow = document.getElementById('subway_infowindow');
-    var modal = document.getElementById('congestion_modal');
+    let modal = document.querySelector('.congestion_modal');
 
     // text값 받기
     var dp = document.querySelector('#departure_station').value;
@@ -91,7 +91,6 @@ function callStation(inputID, event) {
             </div>
         `;
 
-        modal.scrollIntoView();
         infowindow.style.display = 'block'
         modal.style.display = 'block';
 
@@ -225,17 +224,98 @@ function stationinfo() {
 // ---- 은나현 추가 (팝업창 외의 부분 클릭하면 닫힘)
 document.addEventListener('mouseup', function(e) {
     var infowindow = document.getElementById('subway_infowindow');
-    var modal = document.getElementById('congestion_modal');
+    let modal = document.querySelector('.congestion_modal');
     if (!infowindow.contains(e.target) && !modal.contains(e.target)) {
         infowindow.style.display = 'none';
-        modal.style.display = 'none';
+//        modal.style.display = 'none';
     }
 });
 
 document.addEventListener('wheel', function(e) {
     var infowindow = document.getElementById('subway_infowindow');
-    var modal = document.getElementById('congestion_modal');
+    let modal = document.querySelector('.congestion_modal');
     infowindow.style.display = 'none';
-    modal.style.display = 'none';
+//    modal.style.display = 'none';
 });
 
+let buttons = document.querySelectorAll('circle')
+
+buttons.forEach( (button) => {
+    button.addEventListener('click',congestion)
+})
+
+function congestion() {
+
+    let modal = document.querySelector('.congestion_modal');
+    let linebt = document.getElementById('modallinebt');
+    let title = document.getElementById('modaltitle');
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "/map/searchStation/" + this.id + "/", true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            let stations = JSON.parse(xhr.responseText);
+
+            let ids = Object.keys(stations)
+            modal.id = ids[0];
+
+            linebt.innerHTML = ''
+
+            Object.keys(stations).forEach( (station) => {
+                let line = stations[station]['line']
+                linebt.insertAdjacentHTML("beforeend",
+                    `<button class="station_detail_linebt line-${line}"
+                        id="${station}" onclick='changeid(this, ${JSON.stringify(stations[station])})'>${line}</button>` )
+            })
+
+            title.innerHTML =  `
+                    <hr class="station_detail_line line-${stations[modal.id]['line']}">
+                    <div class="station_detail_name line-${stations[modal.id]['line']}-title">
+                        <button class="station_detail_linebt line-${stations[modal.id]['line']}" >
+                            ${stations[modal.id]['line']}</button>
+                        <h2>${stations[modal.id]['name']}</h2>
+                    </div>
+                    <div class="station_detail_prevnext">
+                        <a href="#" class="station_detail_prev">
+                            <i class="fa-solid fa-arrow-left blue"></i><span>압구정로데오</span>
+                        </a>
+                        <a href="#" class="station_detail_next">
+                            <span>선정릉</span> <i class="fa-solid fa-arrow-right blue"></i>
+                        </a>
+                    </div>
+                `
+
+
+        } else {
+            // Error handling
+            console.error('Request failed. Status:', xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+function changeid(e, station){
+
+    let modal = document.querySelector('.congestion_modal');
+    let title = document.getElementById('modaltitle');
+
+    modal.id = e.id;
+
+    title.innerHTML =  `
+        <hr class="station_detail_line line-${station['line']}">
+        <div class="station_detail_name line-${station['line']}-title">
+            <button class="station_detail_linebt line-${station['line']}" >
+                ${station['line']}</button>
+            <h2>${station['name']}</h2>
+        </div>
+        <div class="station_detail_prevnext">
+            <a href="#" class="station_detail_prev">
+                <i class="fa-solid fa-arrow-left blue"></i><span>압구정로데오</span>
+            </a>
+            <a href="#" class="station_detail_next">
+                <span>선정릉</span> <i class="fa-solid fa-arrow-right blue"></i>
+            </a>
+        </div>
+    `
+}

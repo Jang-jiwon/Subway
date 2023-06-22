@@ -263,7 +263,7 @@ a{
 .station_detail_name {
     position: absolute;
     float:left;
-    left:395px;
+    left:360px;
     top:-40px;
     width: 265px;
     height: 75px;
@@ -283,7 +283,7 @@ a{
 
 .station_detail_prevnext{
     content:'';
-    left:390px;
+    left:360px;
     display: inline-block;
     background-color: #0057FF; 
     font-size: 15px; 
@@ -384,6 +384,7 @@ a{
 .station_congestion{
     flex-direction: column;
     justify-content: space-evenly;
+    height:150px !important;
 }
 
 .vertical_sepline{
@@ -586,12 +587,12 @@ a{
     background-color: #00DC3E;
 }
 
-#congestion_modal {
+.congestion_modal {
     background-color: white;
     width: 1000px;
-    height: 300px;
+    height: 400px;
     position: absolute;
-    top: 350px;
+    top: 280px;
     left: 50px;
     border-radius: 30px;
     box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
