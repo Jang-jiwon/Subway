@@ -227,7 +227,7 @@ document.addEventListener('mouseup', function(e) {
     let modal = document.querySelector('.congestion_modal');
     if (!infowindow.contains(e.target) && !modal.contains(e.target)) {
         infowindow.style.display = 'none';
-//        modal.style.display = 'none';
+        modal.style.display = 'none';
     }
 });
 
@@ -235,7 +235,7 @@ document.addEventListener('wheel', function(e) {
     var infowindow = document.getElementById('subway_infowindow');
     let modal = document.querySelector('.congestion_modal');
     infowindow.style.display = 'none';
-//    modal.style.display = 'none';
+    modal.style.display = 'none';
 });
 
 let buttons = document.querySelectorAll('circle')
