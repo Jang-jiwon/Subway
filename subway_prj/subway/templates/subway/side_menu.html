@@ -19,7 +19,9 @@
                     <i class="fa-solid fa-train-subway placeholder_icon"></i>
                     <input type="text" placeholder="역 이름 입력" class="side_menu_input">
                 </div>
-                <button class="button float_right">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
+                <button class="button float_right"
+                        onclick="{% if request.get_full_path == '/map/' or request.get_full_path == '/map/#' %}searchstation(){% else %}stationinfo(){% endif %}">
+                        찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
             </div>
             <div style="height:50px;"></div>
             <div id="route_input">

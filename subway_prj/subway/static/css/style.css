@@ -585,3 +585,16 @@ a{
 .space{
     background-color: #00DC3E;
 }
+
+#congestion_modal {
+    background-color: white;
+    width: 1000px;
+    height: 300px;
+    position: absolute;
+    top: 350px;
+    left: 50px;
+    border-radius: 30px;
+    box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
+    border : 1px solid #a8a8a8;
+    display:none;
+}

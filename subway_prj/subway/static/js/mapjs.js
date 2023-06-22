@@ -47,6 +47,7 @@ function arrival(inputID){
 
 function callStation(inputID, event) {
     var infowindow = document.getElementById('subway_infowindow');
+    var modal = document.getElementById('congestion_modal');
 
     // text값 받기
     var dp = document.querySelector('#departure_station').value;
@@ -89,7 +90,11 @@ function callStation(inputID, event) {
                 </div>
             </div>
         `;
+
+        modal.scrollIntoView();
         infowindow.style.display = 'block'
+        modal.style.display = 'block';
+
         //document.body.appendChild(infowindow);
 
         // Get the position of the clicked circle
@@ -101,9 +106,8 @@ function callStation(inputID, event) {
         var rx = rect.x;
         var ry = rect.y;
 
-
-        infowindow.style.left = (rx-530) + 'px';
-        infowindow.style.top = (ry-100) + 'px';
+        infowindow.style.left = (rx-535) + 'px';
+        infowindow.style.top = (ry-90) + 'px';
         infowindow.style.display = 'block';
 
     }
@@ -192,13 +196,17 @@ function searchstation(){
 // ---- 은나현 추가 (팝업창 외의 부분 클릭하면 닫힘)
 document.addEventListener('mouseup', function(e) {
     var infowindow = document.getElementById('subway_infowindow');
-    if (!infowindow.contains(e.target)) {
+    var modal = document.getElementById('congestion_modal');
+    if (!infowindow.contains(e.target) && !modal.contains(e.target)) {
         infowindow.style.display = 'none';
+        modal.style.display = 'none';
     }
 });
 
 document.addEventListener('wheel', function(e) {
     var infowindow = document.getElementById('subway_infowindow');
+    var modal = document.getElementById('congestion_modal');
     infowindow.style.display = 'none';
+    modal.style.display = 'none';
 });
 
