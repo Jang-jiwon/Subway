@@ -40,7 +40,6 @@
                         <h4>이 주변 장소</h4>
                         <hr class="greyhr">
                         <ul class="place_dropdown_ul">
-                            {% for station in stations %}
                                 {% for spot in station.tourspot_set.all %}
                                     {% if spot.tourspot_name|only_kor %}
                                         <li class="place_dropdown_list">
@@ -54,7 +53,6 @@
                                         </li>
                                     {% endif %}
                                 {% endfor %}
-                            {% endfor%}
 
 <!--                            <li class="place_dropdown_list">-->
 <!--                                <i class="fa-solid fa-flag green"></i>-->
