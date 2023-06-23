@@ -106,8 +106,8 @@ class detail(ListView) :
             elif row['arvlCd'] == '5':
                 row['message'] = '전역 도착'
             elif row['arvlCd'] == '99':
-                if row['barvlDt'] != '0':
-                    row['message'] = str(int(row['barvlDt']) % 60) + '분 후 도착'
+                if int(row['barvlDt']) >= 60 :
+                    row['message'] = str(int(int(row['barvlDt']) / 60)) + '분 후 도착'
                 else :
                     row['message'] = str(row['ordkey'][2:5]).lstrip('0') + '개 전 역 도착'
 

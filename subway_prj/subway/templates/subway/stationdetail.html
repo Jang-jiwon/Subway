@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load to_num %}
+{% load only_kor %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -38,30 +40,38 @@
                         <h4>이 주변 장소</h4>
                         <hr class="greyhr">
                         <ul class="place_dropdown_ul">
-                            <li class="place_dropdown_list">
-                                <i class="fa-solid fa-flag green"></i>
-                                <div class="place_dropdown_detail">
-                                    <span>서울 무형문화재 전수회관</span>
-                                    <a class="blue">링크</a><br>
-                                    <span class="blue bold exit">1번 출구</span>
-                                </div>
-                            </li>
-                            <li class="place_dropdown_list">
-                                <i class="fa-solid fa-flag green"></i>
-                                <div class="place_dropdown_detail">
-                                    <span>서울 무형문화재 전수회관</span>
-                                    <a class="blue">링크</a><br>
-                                    <span class="blue bold exit">1번 출구</span>
-                                </div>
-                            </li>
-                            <li class="place_dropdown_list">
-                                <i class="fa-solid fa-flag green"></i>
-                                <div class="place_dropdown_detail">
-                                    <span>서울 무형문화재 전수회관</span>
-                                    <a class="blue">링크</a><br>
-                                    <span class="blue bold exit">1번 출구</span>
-                                </div>
-                            </li> 
+                            {% for station in stations %}
+                                {% for spot in station.tourspot_set.all %}
+                                    {% if spot.tourspot_name|only_kor %}
+                                        <li class="place_dropdown_list">
+                                            <i class="fa-solid fa-flag green"></i>
+                                            <div class="place_dropdown_detail">
+                                                <a style="font-size:15px" target="_blank"
+                                                   href="https://map.naver.com/v5/search/{{station.station_name}}역 {{ spot.tourspot_name }}">
+                                                        {{ spot.tourspot_name }}</a>
+                                                <span class="blue bold exit float-right">{{ spot.exit_number|to_num }}</span>
+                                            </div>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor%}
+
+<!--                            <li class="place_dropdown_list">-->
+<!--                                <i class="fa-solid fa-flag green"></i>-->
+<!--                                <div class="place_dropdown_detail">-->
+<!--                                    <span>서울 무형문화재 전수회관</span>-->
+<!--                                    <a class="blue">링크</a><br>-->
+<!--                                    <span class="blue bold exit">1번 출구</span>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                            <li class="place_dropdown_list">-->
+<!--                                <i class="fa-solid fa-flag green"></i>-->
+<!--                                <div class="place_dropdown_detail">-->
+<!--                                    <span>서울 무형문화재 전수회관</span>-->
+<!--                                    <a class="blue">링크</a><br>-->
+<!--                                    <span class="blue bold exit">1번 출구</span>-->
+<!--                                </div>-->
+<!--                            </li> -->
                         </ul>
                     </div>
                 </div>
