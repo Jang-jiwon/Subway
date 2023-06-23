@@ -469,7 +469,7 @@ a{
     margin-right:2px;
 }
 .place_dropdown ul{ 
-    padding:10px;
+    padding:0px 10px;
     list-style:none; 
     margin:0px;
 }
@@ -600,4 +600,96 @@ a{
     box-shadow: 4px 0px 15px 5px rgba(0, 0, 0, 0.15);
     border : 1px solid #a8a8a8;
     display:none;
+}
+
+.circle {
+    stroke-width: 15;
+    stroke-linecap: round;
+}
+.line {
+    fill:none;
+    stroke-width: 3;
+}
+.cw {
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke : white;
+}
+
+.c1 {    stroke : #263C96; }
+.c2 {    stroke : #59B543; }
+.c3 {    stroke : #E36900; }
+.c4 {    stroke : #4DA0E0; }
+.c5 {    stroke : #8337E4; }
+.c6 {    stroke : #AB4C00; }
+.c7 {    stroke : #6A7204; }
+.c8 {    stroke : #D6006E; }
+
+.congested_txt{    color: #FF5732;}
+.caution_txt{    color: #FF9900;}
+.normal_txt{    color: #FFF50C; }
+.space_txt{    color: #00DC3E;  }
+
+
+#route_result {
+    width:280px;
+    margin:50px auto 0px auto;
+}
+
+#route_predict {
+    display: inline-block;
+}
+
+#route_when span{
+    font-size:15px;
+}
+
+#route_when span:hover{
+    cursor:pointer;
+}
+
+.route_clicked{
+    color:#0057FF
+}
+
+#route_select button{
+    border-radius:20px;
+    padding:2px 10px;
+}
+.route_text {
+    line-height:20px;
+    margin:25px 0px;
+}
+.route_text h3{
+    display: inline-block;
+    margin:0px;
+}
+
+.route_detail{
+    font-size:14px;
+}
+.route_list {
+    position:relative;
+}
+.route_list button{
+    line-height:20px;
+    width:20px;
+    height:20px;
+    font-size:15px;
+}
+
+.route_list li{
+    list-style: none;
+    margin:40px 0px;
+}
+
+.route_transfer{
+    position:absolute;
+    right:0px;
+    top:-15px;
+}
+
+.route_transfer li{
+    margin: 50px 0px;
+    font-size:15px;
 }

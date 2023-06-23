@@ -164,3 +164,39 @@ def SearchStation(request, id):
         stationjson[station.station_code] = sub_station
 
     return JsonResponse(stationjson)
+
+
+def route(request):
+
+    ids = request.GET['id'].split('x')
+    stations = dict()
+    stations['startSt'] = Station.objects.get(station_code=ids[0])
+    stations['endSt'] = Station.objects.get(station_code=ids[1])
+
+    API_KEY = 'ddD0JPaBMHkAte/oudaImNRJlg9h9uvLoKMIOtZPLqjO3AtVkQW2m2r1La8fv7xFrm9MqauC1PpS6vnuiHj13w=='
+
+    url = 'http://ws.bus.go.kr/api/rest/pathinfo/getPathInfoBySubway'
+    params = {'serviceKey': API_KEY, 'startX': stations['startSt'].lng , 'startY': stations['startSt'].lat,
+              'endX': stations['endSt'].lng, 'endY': stations['endSt'].lat, 'resultType': 'json'}
+    response = requests.get(url, params=params)
+    results = response.json()['msgBody']['itemList']
+    routes = dict()
+
+    results = sorted(results, key=itemgetter('time'))
+    routes['min_time'] = results[0]
+    st_cnt = 0
+    for li in routes['min_time']['pathList']:
+        st_cnt += len(li['railLinkList'])
+    routes['min_time']['st_cnt'] = st_cnt
+
+    results = sorted(results, key=lambda k: (len(k['pathList']), k['time']))
+    routes['min_tf'] = results[0]
+    st_cnt = 0
+    for li in routes['min_tf']['pathList']:
+        st_cnt += len(li['railLinkList'])
+    routes['min_tf']['st_cnt'] = st_cnt
+
+    for result in results :
+        print(len(result['pathList']),result['time'])
+
+    return render(request, 'subway/map_route.html', { 'stations':stations, 'routes':routes})

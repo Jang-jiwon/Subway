@@ -373,3 +373,36 @@ function changeid(e, station){
         </div>
     `
 }
+
+function routeSearch(){
+    let deptSt = document.getElementById("departure_station").value;
+    let arvlSt = document.getElementById("arrival_station").value;
+
+    if( !deptSt || !arvlSt ){
+        alert("출발역과 도착역을 설정해 주세요.")
+        return false;
+    }
+
+    var stationElements = document.getElementsByTagName("text");
+    var deptStId, arvlStId;
+
+    for (var i = 0; i < stationElements.length; i++) {
+        if (stationElements[i].textContent === deptSt) {
+            deptStId = stationElements[i].previousElementSibling.getAttribute("id");
+        }
+        if (stationElements[i].textContent === arvlSt) {
+            arvlStId = stationElements[i].previousElementSibling.getAttribute("id");
+        }
+    }
+    console.log(deptStId,arvlStId);
+    if(!deptStId){
+        alert("출발역을 찾지 못했습니다.");
+        return false;
+    }else if(!arvlStId){
+        alert("도착역을 찾지 못했습니다.");
+        return false;
+    }else{
+        location.href = '/map/route?id='+deptStId.split('x')[0]+'x'+arvlStId.split('x')[0];
+    }
+
+}

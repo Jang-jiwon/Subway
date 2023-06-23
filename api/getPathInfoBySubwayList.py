@@ -27,6 +27,7 @@ params ={'serviceKey' : API_KEY, 'startX' : startX , 'startY' : startY,
     'endX': endX , 'endY': endY, 'resultType' : 'json'}
 response = requests.get(url, params=params)
 result = response.json()['msgBody']['itemList']
+print(result)
 index = 0
 for i in result :
     index += 1
