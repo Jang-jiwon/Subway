@@ -407,14 +407,14 @@ function congestion_bar(id, day){
             bar.innerHTML =  `
                 <div class="station_congestion_updown">
                     <div class="station_congestion_title" >
-                        <span>청량리 방면</span><span class="grey">상행</span>
+                        <span>${congestion['up']} 방면</span>
                     </div>
                     <div class="station_congestion_bar" id="congestion_up">
                     </div>
                 </div>
                 <div class="station_congestion_updown">
                     <div class="station_congestion_title" >
-                        <span>인천 방면</span><span class="grey">하행</span>
+                        <span >${congestion['down']} 방면</span>
                     </div>
                     <div class="station_congestion_bar" id="congestion_down">
                     </div>

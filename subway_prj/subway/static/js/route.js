@@ -3,6 +3,7 @@ mintimert = document.getElementById('route_result_mintime');
 mintfrt = document.getElementById('route_result_mintf');
 mintimebt = document.getElementById('mintimebt');
 mintfbt = document.getElementById('mintfbt');
+route_pdbts = document.querySelectorAll('.route_pdbt');
 
 function mintime(){
     results.forEach( (result) => {
@@ -23,3 +24,4 @@ function mintf(){
     mintfbt.classList.add('clicked')
     mintfrt.style.display = 'block';
 }
+

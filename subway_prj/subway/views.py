@@ -215,6 +215,9 @@ def cgPredict(request, id, day):
     station = Station.objects.get(station_code=id)
     congestionjson = {}
 
+    congestionjson['up'] = station.line.upend_station
+    congestionjson['down'] = station.line.downend_station
+
     #  받을값 평토휴, 호선, 역코드, 상하선, 시간대
     # json 형태 {1:{0:0, 0:0, ...}, 2:{0:0, 0:0, ...}}
     for i in range(1,3) :
@@ -235,3 +238,4 @@ def cgPredict(request, id, day):
 
     # print(congestionjson)
     return JsonResponse(congestionjson)
+

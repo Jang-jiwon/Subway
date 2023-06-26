@@ -511,7 +511,12 @@ a{
 .station_congestion_title{
     display: inline-block;
 }
+.station_congestion_title span{
+    display:inline-block;
+    width:120px;
+}
 .station_congestion_title .grey{
+    display:inline;
     font-size:13px;
     margin-left:3px;
 }
@@ -693,11 +698,6 @@ a{
     font-size:15px;
 }
 
-#route_rollup{
-    display:block;
-    text-align: center;
-    margin: 20px auto -35px auto;
-}
 #route_rollup:hover{
     cursor:pointer;
 }

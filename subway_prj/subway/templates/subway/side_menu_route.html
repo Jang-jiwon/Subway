@@ -32,14 +32,17 @@
                 <button class="button float_right" onclick="routeSearch()">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
             </div>
             <div style="clear:both"></div>
-            <a href="/map/" id="route_rollup"><i class="fa-solid fa-chevron-up blue bold"></i></a>
+
 
             <div id="route_result">
                 <div id="route_when">
-                    <span class="bold route_clicked">지금 출발</span>
-                    <div id="route_predict" class="bold grey float_right">
-                        <span>평일</span> | <span>토요일</span> | <span>휴일</span>
-                    </div>
+                    <span class="bold route_pdbt route_clicked" >지금 출발</span>
+<!--                    <div id="route_predict" class="bold grey float_right">-->
+<!--                        <span class="route_pdbt" >평일</span>-->
+<!--                        | <span class="route_pdbt" >토요일</span>-->
+<!--                        | <span class="route_pdbt" >휴일</span>-->
+<!--                    </div>-->
+                    <a href="/map/" id="route_rollup" class="float_right"><i class="fa-solid fa-chevron-up blue bold"></i></a>
                     <hr class="greyhr">
                 </div>
                 <div id="route_select">
@@ -56,7 +59,7 @@
                         <svg class="route_line" width = "50" height = "250" style="float:left">
                             <g>
                                 {% for route in routes.min_time.pathList %}
-                                    <line x1 = "20" y1 = "{{ forloop.counter0|getposition }}" x2 = "20"
+                                    <line id = "{{ route.routeNm|only_num }}" x1 = "20" y1 = "{{ forloop.counter0|getposition }}" x2 = "20"
                                           y2 = "{{ forloop.counter0|getnextposition }}" class="line c{{ route.routeNm|only_num }}"></line>
                                 {% endfor %}
                                 {% for route in routes.min_time.pathList %}
@@ -153,7 +156,7 @@
                         <div class="route_transfer" >
                             <ul class="grey">
                                 {% for route in routes.min_tf.pathList %}
-                                    <li>{{ route.railLinkList|length }}개역 이동</li>
+                                    <li class="routeli">{{ route.railLinkList|length }}개역 이동</li>
                                 {% endfor %}
     <!--                            <li>4개역 이동</li>-->
     <!--                            <li>4개역 이동<span class="congested_txt bold"> 혼잡 예상</span></li>-->
