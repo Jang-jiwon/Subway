@@ -254,6 +254,8 @@ function congestion() {
     var xhr = new XMLHttpRequest();
 
     xhr.open("GET", "/map/searchStation/" + this.id + "/", true);
+
+
     xhr.onload = function() {
         if (xhr.status === 200) {
             let stations = JSON.parse(xhr.responseText);
@@ -277,14 +279,6 @@ function congestion() {
                             ${stations[modal.id]['line']}</button>
                         <h2>${stations[modal.id]['name']}</h2>
                     </div>
-                    <div class="station_detail_prevnext">
-                        <a href="#" class="station_detail_prev">
-                            <i class="fa-solid fa-arrow-left blue"></i><span>압구정로데오</span>
-                        </a>
-                        <a href="#" class="station_detail_next">
-                            <span>선정릉</span> <i class="fa-solid fa-arrow-right blue"></i>
-                        </a>
-                    </div>
                 `
 
 
@@ -294,6 +288,10 @@ function congestion() {
         }
     };
     xhr.send();
+    congestion_bar(this.id.split('x')[0], 0);
+
+    daybts = document.querySelectorAll('.daybt');
+    daybts[0].click();
 }
 
 
@@ -329,14 +327,6 @@ function congestion_search(id) {
                             ${stations[modal.id]['line']}</button>
                         <h2>${stations[modal.id]['name']}</h2>
                     </div>
-                    <div class="station_detail_prevnext">
-                        <a href="#" class="station_detail_prev">
-                            <i class="fa-solid fa-arrow-left blue"></i><span>압구정로데오</span>
-                        </a>
-                        <a href="#" class="station_detail_next">
-                            <span>선정릉</span> <i class="fa-solid fa-arrow-right blue"></i>
-                        </a>
-                    </div>
                 `
 
 
@@ -345,6 +335,7 @@ function congestion_search(id) {
             console.error('Request failed. Status:', xhr.status);
         }
     };
+    congestion_bar(id.split('x')[0], 0);
     xhr.send();
 }
 
@@ -363,15 +354,10 @@ function changeid(e, station){
                 ${station['line']}</button>
             <h2>${station['name']}</h2>
         </div>
-        <div class="station_detail_prevnext">
-            <a href="#" class="station_detail_prev">
-                <i class="fa-solid fa-arrow-left blue"></i><span>압구정로데오</span>
-            </a>
-            <a href="#" class="station_detail_next">
-                <span>선정릉</span> <i class="fa-solid fa-arrow-right blue"></i>
-            </a>
-        </div>
     `
+    daybts = document.querySelectorAll('.daybt');
+    daybts[0].click();
+//    congestion_bar(e.id, 0);
 }
 
 function routeSearch(){
@@ -404,5 +390,87 @@ function routeSearch(){
     }else{
         location.href = '/map/route?id='+deptStId.split('x')[0]+'x'+arvlStId.split('x')[0];
     }
+
+}
+
+function congestion_bar(id, day){
+    let bar = document.querySelector('.station_congestion');
+//    bar.innerHTML = `${id}, ${day}`
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "/map/cgPredict/" + id + "/" + day + "/" , true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            let congestion = JSON.parse(xhr.responseText);
+
+            bar.innerHTML =  `
+                <div class="station_congestion_updown">
+                    <div class="station_congestion_title" >
+                        <span>청량리 방면</span><span class="grey">상행</span>
+                    </div>
+                    <div class="station_congestion_bar" id="congestion_up">
+                    </div>
+                </div>
+                <div class="station_congestion_updown">
+                    <div class="station_congestion_title" >
+                        <span>인천 방면</span><span class="grey">하행</span>
+                    </div>
+                    <div class="station_congestion_bar" id="congestion_down">
+                    </div>
+                </div>
+            `
+
+            let up = document.getElementById('congestion_up');
+            let down = document.getElementById('congestion_down');
+
+            appendblock(congestion,up,down)
+
+        } else {
+            // Error handling
+            console.error('Request failed. Status:', xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+function appendblock(congestion,up,down){
+
+        let upHtml = ``, downHtml = ``
+        Object.keys(congestion[1]).forEach( (time) => {
+            time = parseInt(time)
+            upHtml += `
+                <div class="station_congestion_block">
+                    <button class="station_congestion_color ${congestion[1][time]}"></button>
+                    <span>${5+time*2}-${5+(time+1)*2}</span>
+                </div>
+            `
+        })
+        Object.keys(congestion[2]).forEach( (time) => {
+            time = parseInt(time)
+            downHtml += `
+                <div class="station_congestion_block">
+                    <button class="station_congestion_color ${congestion[2][time]}"></button>
+                    <span>${5+time*2}-${5+(time+1)*2}</span>
+                </div>
+            `
+        })
+
+        up.innerHTML = upHtml;
+        down.innerHTML = downHtml;
+}
+
+function congestion_day(e,day){
+
+    daybts = document.querySelectorAll('.daybt');
+
+    daybts.forEach( (bt) => {
+         bt.classList.remove('clicked')
+    })
+
+    let modal = document.querySelector('.congestion_modal');
+    congestion_bar(modal.id, day)
+
+    e.classList.add('clicked')
 
 }

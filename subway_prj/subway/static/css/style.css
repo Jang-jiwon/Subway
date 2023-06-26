@@ -439,7 +439,6 @@ a{
 
 
 .place_dropdown{
-    left:0px !important;
     box-sizing: border-box;
     text-align: left;
     position: absolute;
@@ -447,7 +446,7 @@ a{
     background-color: white;
     height:fit-content;
     max-height: 320px; 
-    width: 280px; 
+    width: 250px;
     white-space:wrap;
     z-index: 1;
     border-radius: 10px;
@@ -692,4 +691,13 @@ a{
 .route_transfer li{
     margin: 50px 0px;
     font-size:15px;
+}
+
+#route_rollup{
+    display:block;
+    text-align: center;
+    margin: 20px auto -35px auto;
+}
+#route_rollup:hover{
+    cursor:pointer;
 }

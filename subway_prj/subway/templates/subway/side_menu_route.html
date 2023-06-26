@@ -32,6 +32,8 @@
                 <button class="button float_right" onclick="routeSearch()">찾기 <i class="fa-solid fa-arrow-right blue"></i></button>
             </div>
             <div style="clear:both"></div>
+            <a href="/map/" id="route_rollup"><i class="fa-solid fa-chevron-up blue bold"></i></a>
+
             <div id="route_result">
                 <div id="route_when">
                     <span class="bold route_clicked">지금 출발</span>
@@ -104,7 +106,7 @@
                 </div>
                 <div id="route_result_mintf" class="route_results" style="display:none">
                     <div class="route_text">
-                        <h3>{{routes.min_tf.time}}분</h3> <span class="grey">최소시간</span>
+                        <h3>{{routes.min_tf.time}}분</h3> <span class="grey">최소환승</span>
                         <div class="route_detail float_right" >
                             {{routes.min_tf.st_cnt}}개역 <span class="grey">환승</span> {{ routes.min_tf.pathList|length|add:-1 }}회</div>
                     </div>

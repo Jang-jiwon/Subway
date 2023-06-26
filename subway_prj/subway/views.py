@@ -12,6 +12,9 @@ from django.views.generic import View, DetailView, ListView
 
 from .models import Line, Station, Congestion, Tourspot
 
+import os.path
+import pickle
+import numpy as np
 
 def index(request):
     # return render(request, 'subway/test.html')
@@ -151,9 +154,11 @@ def SearchId(request, q):
 
 
 def SearchStation(request, id):
+    print(id)
     ids = id.split('x')
     stations = []
     for id in ids:
+        print(id)
         stations.append(Station.objects.get(station_code=id))
 
     stationjson = {}
@@ -200,3 +205,33 @@ def route(request):
         print(len(result['pathList']),result['time'])
 
     return render(request, 'subway/map_route.html', { 'stations':stations, 'routes':routes})
+
+
+def cgPredict(request, id, day):
+    current_path = os.path.abspath(__file__)
+    file_path_model = os.path.join(os.path.dirname(current_path),'cg_classifier.pkl')
+    model = pickle.load(open(file_path_model, 'rb'))        # 피클파일 읽어오기
+
+    station = Station.objects.get(station_code=id)
+    congestionjson = {}
+
+    #  받을값 평토휴, 호선, 역코드, 상하선, 시간대
+    # json 형태 {1:{0:0, 0:0, ...}, 2:{0:0, 0:0, ...}}
+    for i in range(1,3) :
+        sub_json = {}
+        for j in range(10) :
+            input_features = np.array([day, station.line.serial_number, id, i, j])
+            pred = model.predict(input_features.reshape(1,-1))
+            if pred == [1] :
+                sub_json[j] = 'space'
+            elif pred == [2] :
+                sub_json[j] = 'normal'
+            elif pred == [3] :
+                sub_json[j] = 'caution'
+            elif pred == [4] :
+                sub_json[j] = 'congested'
+
+        congestionjson[i] = sub_json
+
+    # print(congestionjson)
+    return JsonResponse(congestionjson)

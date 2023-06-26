@@ -8,9 +8,9 @@
         <div class="station_timetable_buttonbar">
             <span class="bold">시간대별 역 혼잡도 예측</span>
             <div>
-                <button class="button">평일</button>
-                <button class="button">토요일</button>
-                <button class="button">휴일</button>
+                <button class="daybt button clicked" onclick="congestion_day(this,0)">평일</button>
+                <button class="daybt button" onclick="congestion_day(this,1)">토요일</button>
+                <button class="daybt button" onclick="congestion_day(this,2)">휴일</button>
             </div>
         </div>
         <div class="station_congestion">

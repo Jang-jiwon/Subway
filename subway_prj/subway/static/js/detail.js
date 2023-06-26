@@ -9,7 +9,7 @@ timetables = document.querySelectorAll('.station_timetable');
 
 placebt.addEventListener('click', function(){  
     let rect = placebt.getBoundingClientRect();  
-    placedd.style.left = (rect.x-650) + "px";
+    placedd.style.left = (rect.x-1425) + "px";
     placedd.style.top = (rect.y-15) + "px";  
     placedd.style.display = 'block'; 
 }) 

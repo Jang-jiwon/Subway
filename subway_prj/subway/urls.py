@@ -12,4 +12,5 @@ urlpatterns = [
 
     path('map/searchId/<str:q>/', views.SearchId),
     path('map/searchStation/<str:id>/', views.SearchStation),
+    path('map/cgPredict/<int:id>/<int:day>/', views.cgPredict),
 ]
