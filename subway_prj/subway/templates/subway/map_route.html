@@ -2070,6 +2070,8 @@
                                 <circle onclick = "callStation(this.id)" id = "4406" cx = "840" cy = "825" r = "5" stroke = "#6789ca" stroke-width = "1" fill = "white"/>
                                 <text x = "790" y = "837.5" font-size = "10">보라매병원</text>
                             </g>
+                            <g id = "icon">
+                            </g>
                         </g>
                     </svg>
                 </div>
@@ -2090,6 +2092,98 @@
 <script>
         var area = document.getElementById('zoomable');
         window.pz = panzoom(area, {autocenter: true, bounds: true});
+        pz.moveTo(-300, -100);
+
+        var dpst = '{{ stations.startSt.station_name }}';
+        var arst = '{{ stations.endSt.station_name }}';
+        var trst = '{{ routes.min_time.pathList.1.fname }}';
+        trst = trst.replace(/역$/, '');
+
+        console.log(dpst);
+        console.log(arst);
+
+        var stationElements = document.getElementsByTagName("text");
+        var dpstId = null;
+        var arstId = null;
+        var trstId = null;
+
+        for (var i = 0; i < stationElements.length; i++) {
+            if (stationElements[i].textContent === dpst) {
+                dpstId = stationElements[i].previousElementSibling.getAttribute("id");
+                break;
+            }
+        }
+
+        for (var i = 0; i < stationElements.length; i++) {
+            if (stationElements[i].textContent === arst) {
+                arstId = stationElements[i].previousElementSibling.getAttribute("id");
+                break;
+            }
+        }
+
+        if (trst) {
+          for (var i = 0; i < stationElements.length; i++) {
+            if (stationElements[i].textContent === trst) {
+              trstId = stationElements[i].previousElementSibling.getAttribute("id");
+              break;
+            }
+          }
+        }
+
+        console.log(dpstId);
+        console.log(arstId);
+
+        var dp = document.getElementById(dpstId);
+        var ar = document.getElementById(arstId);
+        var tr = document.getElementById(trstId);
+
+        var dpx = dp.getAttribute('cx');
+        var dpy = dp.getAttribute('cy');
+
+        var arx = ar.getAttribute('cx');
+        var ary = ar.getAttribute('cy');
+
+        var trx = tr ? tr.getAttribute('cx') : null;
+        var tray = tr ? tr.getAttribute('cy') : null;
+
+        console.log(dpx);
+        console.log(dpy);
+
+        console.log(arx);
+        console.log(ary);
+
+        var icon = document.getElementById('icon');
+
+        var textdpX = parseInt(dpx) - 10;
+        var textdpY = parseInt(dpy) + 3;
+
+        var textarX = parseInt(arx) - 10;
+        var textarY = parseInt(ary) + 3;
+
+        var texttrX = trx ? parseInt(trx) - 10 : null;
+        var texttrY = tray ? parseInt(tray) + 3 : null;
+
+        if(trx == null){
+
+        icon.innerHTML = `
+            <circle id="greenIcon" class="green" cx="${dpx}" cy="${dpy}" r="15" fill="#00FF00"/>
+            <text x = "${textdpX}"  y = "${textdpY}" font-size = "11" fill="blue" font-weight="bold">출발</text>
+            <circle id="redIcon" class="red" cx="${arx}" cy="${ary}" r="15" fill="#FF0000"/>
+            <text x = "${textarX}" y = "${textarY}" font-size = "11" fill="blue" font-weight="bold">도착</text>
+        `;
+
+        } else {
+
+        icon.innerHTML = `
+            <circle id="greenIcon" class="green" cx="${dpx}" cy="${dpy}" r="15" fill="#00FF00"/>
+            <text x = "${textdpX}"  y = "${textdpY}" font-size = "11" fill="blue" font-weight="bold">출발</text>
+            <circle id="redIcon" class="red" cx="${arx}" cy="${ary}" r="15" fill="#FF0000"/>
+            <text x = "${textarX}" y = "${textarY}" font-size = "11" fill="blue" font-weight="bold">도착</text>
+            <circle id="yellowIcon" class="yellow" cx="${trx}" cy="${tray}" r="15" fill="yellow"/>
+            <text x = "${texttrX}" y = "${texttrY}" font-size = "11" fill="blue" font-weight="bold">환승</text>
+        `;
+
+        }
 </script>
 </script>
 </html>
